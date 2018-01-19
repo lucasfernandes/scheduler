@@ -7,9 +7,11 @@
     "test": "jest"
   },
   "dependencies": {
+    "prop-types": "^15.6.0",
     "react": "16.2.0",
     "react-native": "0.52.0",
     "react-native-vector-icons": "^4.5.0",
+    "react-navigation": "^1.0.0-beta.27",
     "react-redux": "^5.0.6",
     "reactotron-react-native": "^1.14.0",
     "reactotron-redux": "^1.13.0",

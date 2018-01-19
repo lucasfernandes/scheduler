@@ -13,9 +13,8 @@ export default (rootReducer) => {
   enhancers.push(applyMiddleware(...middleware));
 
   /* Store */
-  // const createAppropriateStore = __DEV__ ? console.tron.createStore : createStore;
-  // const store = createAppropriateStore(rootReducer, compose(...enhancers));
-  const store = createStore(rootReducer);
+  const createAppropriateStore = __DEV__ ? console.tron.createStore : createStore;
+  const store = createAppropriateStore(rootReducer, compose(...enhancers));
 
   /* Run Saga */
   // sagaMiddleware.run(rootSaga);
