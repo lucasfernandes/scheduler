@@ -22,10 +22,13 @@
     "reduxsauce": "^0.7.0"
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.11.0",
     "babel-eslint": "^8.2.1",
     "babel-jest": "22.1.0",
     "babel-plugin-module-resolver": "^3.0.0",
     "babel-preset-react-native": "4.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.15.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-import-resolver-babel-module": "^4.0.0",
@@ -34,9 +37,28 @@
     "eslint-plugin-react": "^7.5.1",
     "eslint-plugin-react-native": "^3.2.1",
     "jest": "22.1.3",
-    "react-test-renderer": "16.2.0"
+    "react-dom": "^16.2.0",
+    "react-test-renderer": "16.2.0",
+    "redux-mock-store": "^1.4.0",
+    "redux-saga-tester": "^1.0.378",
+    "sinon": "^4.1.6"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation)"
+    ],
+    "setupFiles": [
+      "<rootDir>/__tests__/setup.js"
+    ],
+    "testMatch": [
+      "<rootDir>/__tests__/**/?(*.)(spec|test).js"
+    ],
+    "collectCoverageFrom": [
+      "src/components/**/*.{js,jsx}",
+      "src/pages/**/*.{js,jsx}",
+      "src/store/ducks/**/*.{js,jsx}",
+      "src/store/sagas/**/*.{js,jsx}"
+    ]
   }
 }
