@@ -1,10 +1,16 @@
 import colors from './colors';
 import metrics from './metrics';
 
-export default {
+const general = {
+  safeArea: {
+    flex: 1,
+  },
+
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    padding: metrics.basePadding,
+    padding: metrics.baseSpace,
   },
 };
+
+export default general;
