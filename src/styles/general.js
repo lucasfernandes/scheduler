@@ -4,6 +4,7 @@ import metrics from './metrics';
 const general = {
   safeArea: {
     flex: 1,
+    backgroundColor: colors.background,
   },
 
   container: {

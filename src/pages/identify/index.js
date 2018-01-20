@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 /* Presentational */
 import { View, Text } from 'react-native';
 
-import styles from './styles';
+import EntryHeader from 'components/EntryHeader';
 
-// console.tron.log(styles.container[1]);
+
+import styles from './styles';
 
 export default class Identify extends Component {
   static propTypes = {};
@@ -19,7 +20,7 @@ export default class Identify extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>IDENTIFY</Text>
+        <EntryHeader />
       </View>
     );
   }
