@@ -1,21 +1,21 @@
 import React from 'react';
-// import { SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import { addNavigationHelpers } from 'react-navigation';
 import { connect } from 'react-redux';
 import Routes from './routes';
-// import styles from './styles';
+import styles from './styles';
 
 const Navigator = ({ dispatch, nav }) => (
   // <SafeAreaView
   //   style={styles.safeArea}
   // >
-  <Routes
-    navigation={addNavigationHelpers({
-      dispatch,
-      state: nav,
-    })}
-  />
+    <Routes
+      navigation={addNavigationHelpers({
+        dispatch,
+        state: nav,
+      })}
+    />
   // </SafeAreaView>
 );
 

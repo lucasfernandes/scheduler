@@ -11,4 +11,5 @@ export default {
   tinyMargin: 10,
   smallSpace: 15,
   baseSpace: 20,
+  baseRadius: 5,
 };
