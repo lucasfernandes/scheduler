@@ -8,7 +8,7 @@ import schedulerImg from 'assets/images/scheduler.png';
 import styles from './styles';
 
 const EntryHeader = () => (
-  <View style={styles.container}>
+  <View style={styles.entryHeaderContainer}>
     <Image
       style={styles.image}
       source={schedulerImg}
