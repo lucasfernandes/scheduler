@@ -9,6 +9,7 @@ const IdentifyRoutes = StackNavigator({
   Register: { screen: Register },
   Login: { screen: Login },
 }, {
+  cardStyle: { shadowColor: 'transparent' },
   headerMode: 'none',
 });
 
@@ -16,6 +17,7 @@ const Routes = StackNavigator({
   Identify: { screen: IdentifyRoutes },
 }, {
   headerMode: 'none',
+  cardStyle: { shadowColor: 'transparent' },
 });
 
 export default Routes;

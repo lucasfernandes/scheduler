@@ -7,16 +7,16 @@ import Routes from './routes';
 import styles from './styles';
 
 const Navigator = ({ dispatch, nav }) => (
-  // <SafeAreaView
-  //   style={styles.safeArea}
-  // >
+  <SafeAreaView
+    style={styles.safeArea}
+  >
     <Routes
       navigation={addNavigationHelpers({
         dispatch,
         state: nav,
       })}
     />
-  // </SafeAreaView>
+  </SafeAreaView>
 );
 
 Navigator.propTypes = {

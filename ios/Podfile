@@ -1,0 +1,28 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+target 'scheduler' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for scheduler
+
+  target 'schedulerTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'scheduler-tvOS' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for scheduler-tvOS
+
+  target 'scheduler-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
