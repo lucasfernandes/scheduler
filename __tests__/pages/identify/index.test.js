@@ -1,15 +1,66 @@
 import React from 'react';
-import { TextInput } from 'react-native';
 
 import { shallow } from 'enzyme';
-import Identify from 'pages/identify';
+import configureStore from 'redux-mock-store';
+import IdentifyActions from 'store/ducks/identify';
 
+import { TextInput, ActivityIndicator, TouchableOpacity } from 'react-native';
+
+import Identify from 'pages/identify';
+import CustomTextInput from 'components/CustomTextInput';
+import Button from 'components/Button';
+
+const initialState = {
+  identify: {
+    user: null,
+    loading: false,
+    error: false,
+  },
+};
+
+const loadingState = {
+  identify: {
+    user: null,
+    loading: true,
+    error: false,
+  },
+};
+
+const mockStore = configureStore([]);
 
 describe('Testing Identify Page', () => {
-  it('should render as expected', () => {
-    const wrapper = shallow(<Identify />);
+  let store = mockStore(initialState);
 
-    // expect(wrapper.find(TextInput)).toHaveLength(1);
-    // expect(wrapper.find(Image).prop('source')).toEqual(schedulerImg);
+
+  function createWrapper(state = initialState) {
+    store = mockStore(state);
+    return shallow(
+      <Identify />,
+      { context: { store } },
+    );
+  }
+
+  it('can see loading when user requests phone number auth', () => {
+    const wrapper = createWrapper(loadingState);
+    const button = wrapper.dive().find(Button);
+
+    button.dive().find(TouchableOpacity).simulate('press');
+
+    expect(button.dive().find(ActivityIndicator)).toHaveLength(1);
+  });
+
+  it('can set a phone number', () => {
+    const wrapper = createWrapper(initialState);
+    const button = wrapper.dive().find(Button);
+    const phone = '+55999999999';
+
+    wrapper.dive().find(CustomTextInput).dive().find(TextInput)
+      .simulate('changeText', phone);
+
+    button.simulate('press');
+
+    const action = store.getActions([0])[0].type;
+
+    expect(action).toEqual(IdentifyActions.identifyRequest().type);
   });
 });

@@ -10,15 +10,14 @@ import { colors } from 'styles';
 
 import styles from './styles';
 
-const CustomTextInput = ({ iconName, placeholder, placeholderTextColor }) => (
+const CustomTextInput = ({ iconName, ...props }) => (
   <View style={styles.container}>
     <View style={styles.SectionStyle}>
       <Icon name={iconName} size={20} style={styles.icon} />
       <TextInput
         style={styles.input}
-        placeholder={placeholder}
-        placeholderTextColor={placeholderTextColor}
         underlineColorAndroid="transparent"
+        {...props}
       />
     </View>
   </View>

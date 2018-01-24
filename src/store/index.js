@@ -3,9 +3,7 @@ import storage from 'redux-persist/es/storage';
 
 /* Reducers */
 import navReducer from 'navigation/reducer';
-// import { reducer as categories } from './ducks/categories';
-// import { reducer as categoryProducts } from './ducks/categoryProducts';
-// import { reducer as cart } from './ducks/cart';
+import { reducer as identify } from './ducks/identify';
 
 import configureStore from './configureStore';
 // import rootSaga from './sagas';
@@ -16,6 +14,7 @@ const rootReducer = persistCombineReducers({
   storage,
 }, {
   nav: navReducer,
+  identify,
 });
 // const store = configureStore(rootReducer, rootSaga);
 const store = configureStore(rootReducer, []);

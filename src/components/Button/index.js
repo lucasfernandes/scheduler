@@ -3,30 +3,32 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 /* Presentational */
-import { Platform, TouchableOpacity, TouchableNativeFeedback, Text } from 'react-native';
+import { Platform, TouchableOpacity, TouchableNativeFeedback, Text, ActivityIndicator } from 'react-native';
 
 import styles from './styles';
 
 const Element = Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback;
 
-const Button = ({ text, onPress }) => (
+const Button = ({ text, loading, ...props }) => (
   <Element
-    onPress={onPress}
     style={styles.buttonContainer}
     activeOpacity={0.6}
+    {...props}
   >
-    <Text style={styles.buttonText}>{text}</Text>
+    { loading
+        ? <ActivityIndicator size="small" color="white" />
+        : <Text style={styles.buttonText}>{text}</Text>}
   </Element>
 );
 
 Button.propTypes = {
   text: PropTypes.string,
-  onPress: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 Button.defaultProps = {
   text: 'Button',
-  onPress: () => {},
+  loading: false,
 };
 
 export default Button;

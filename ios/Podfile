@@ -6,6 +6,9 @@ target 'scheduler' do
   # use_frameworks!
 
   # Pods for scheduler
+  
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
 
   target 'schedulerTests' do
     inherit! :search_paths
