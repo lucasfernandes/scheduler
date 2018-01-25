@@ -51,16 +51,15 @@ describe('Testing Identify Page', () => {
 
   it('can set a phone number', () => {
     const wrapper = createWrapper(initialState);
-    const button = wrapper.dive().find(Button);
     const phone = '+55999999999';
 
     wrapper.dive().find(CustomTextInput).dive().find(TextInput)
       .simulate('changeText', phone);
 
-    button.simulate('press');
+    const newWrapper = wrapper.dive().setState({ phone });
 
-    const action = store.getActions([0])[0].type;
+    newWrapper.dive().find(Button).first().simulate('press');
 
-    expect(action).toEqual(IdentifyActions.identifyRequest().type);
+    expect(store.getActions([0])).toContainEqual(IdentifyActions.identifyRequest(phone));
   });
 });
