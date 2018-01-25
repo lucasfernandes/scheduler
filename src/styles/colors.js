@@ -10,4 +10,5 @@ export default {
   white: '#FFF',
   whiteOpacity: 'rgba(255, 255, 255, 0.6)',
   black: '#000',
+  pink: '#E8C7FF',
 };

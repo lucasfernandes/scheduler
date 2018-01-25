@@ -17,6 +17,7 @@ const CustomTextInput = ({ iconName, ...props }) => (
       <TextInput
         style={styles.input}
         underlineColorAndroid="transparent"
+        keyboardAppearance="dark"
         {...props}
       />
     </View>

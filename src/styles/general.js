@@ -12,6 +12,14 @@ const general = {
     backgroundColor: colors.background,
     padding: metrics.baseSpace,
   },
+
+  dividerForm: {
+    marginVertical: (metrics.tinyMargin / 2),
+  },
+
+  dividerButton: {
+    marginVertical: (metrics.tinyMargin / 2) + 2.5,
+  },
 };
 
 export default general;

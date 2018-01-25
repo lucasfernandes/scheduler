@@ -5,12 +5,13 @@ import Register from 'pages/register';
 import Login from 'pages/login';
 
 const IdentifyRoutes = StackNavigator({
-  Identify: { screen: Identify },
-  Register: { screen: Register },
+  // Register: { screen: Register },
   Login: { screen: Login },
+  // Identify: { screen: Identify },
 }, {
   cardStyle: { shadowColor: 'transparent' },
   headerMode: 'none',
+  // initialRouteName: 'Register',
 });
 
 const Routes = StackNavigator({
@@ -18,6 +19,7 @@ const Routes = StackNavigator({
 }, {
   headerMode: 'none',
   cardStyle: { shadowColor: 'transparent' },
+  // initialRouteName: 'Identify',
 });
 
 export default Routes;

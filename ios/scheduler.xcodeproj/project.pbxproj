@@ -383,6 +383,7 @@
 		A0B47347D997468C8718554A /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		A452F163B39E7754962CD12D /* libPods-scheduler-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-scheduler-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0342C72016706700C14FC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AB91F369201A5D8F00883D3B /* scheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = scheduler.entitlements; path = scheduler/scheduler.entitlements; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		BF02D41798CD437EA19589AD /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		C416FA8E1FA1FBDF1C2563E2 /* Pods-scheduler-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scheduler-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-scheduler-tvOS/Pods-scheduler-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -535,6 +536,7 @@
 		13B07FAE1A68108700A75B9A /* scheduler */ = {
 			isa = PBXGroup;
 			children = (
+				AB91F369201A5D8F00883D3B /* scheduler.entitlements */,
 				AB0342C72016706700C14FC4 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -817,6 +819,11 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 6B36S74UH9;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1567,6 +1574,7 @@
 			baseConfigurationReference = EA70BEAA26B3BF00BE2AE95E /* Pods-scheduler.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = scheduler/scheduler.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 6B36S74UH9;
@@ -1592,6 +1600,7 @@
 			baseConfigurationReference = 41F7A36CE0C303E6F3697E79 /* Pods-scheduler.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = scheduler/scheduler.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6B36S74UH9;
 				HEADER_SEARCH_PATHS = (
