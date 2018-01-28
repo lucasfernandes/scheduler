@@ -35,6 +35,7 @@
 		2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E941DF850E9000B6D8A /* libRCTText-tvOS.a */; };
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
+		2D560A7A827E4D1DBBDB063F /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A26A2BB176F47F0BA4FD3EB /* libRNFirebase.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* schedulerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* schedulerTests.m */; };
 		49708DF742C845FF905F68FC /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF02D41798CD437EA19589AD /* Feather.ttf */; };
 		551B58BB1ACFA024BC9259DC /* libPods-schedulerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AED94F4A96782DF7FBDD64C /* libPods-schedulerTests.a */; };
@@ -47,7 +48,7 @@
 		A2F9FF82BD5E4F99ACB11807 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0E31E6D9B3C49AC903E914D /* MaterialIcons.ttf */; };
 		A5A043397FAAEB59767EF395 /* libPods-scheduler-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A452F163B39E7754962CD12D /* libPods-scheduler-tvOSTests.a */; };
 		A7D98EBBC6A8DCEF6D288A1D /* libPods-scheduler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45397354547D2B05230DE092 /* libPods-scheduler-tvOS.a */; };
-		AB0342C82016706700C14FC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB0342C72016706700C14FC4 /* GoogleService-Info.plist */; };
+		AB5214CE201C2D5C00C2E64B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB5214CD201C2D5C00C2E64B /* GoogleService-Info.plist */; };
 		AB5C0AEEC0A049DE8C83E0DC /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 356922F47DD44D9F855D4C85 /* EvilIcons.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B0E45FAD7D094BE491DA5892 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7819951F14FA459EB40665BF /* SimpleLineIcons.ttf */; };
@@ -330,6 +331,13 @@
 			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
 			remoteInfo = RNVectorIcons;
 		};
+		ABA6C300201A8DB400C65992 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49CE53F558CD48C8BFA405D3 /* RNFirebase.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNFirebase;
+		};
 		ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -349,6 +357,7 @@
 		00E356EE1AD99517003FC87E /* schedulerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = schedulerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* schedulerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = schedulerTests.m; sourceTree = "<group>"; };
+		0A26A2BB176F47F0BA4FD3EB /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* scheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -369,6 +378,7 @@
 		41F7A36CE0C303E6F3697E79 /* Pods-scheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scheduler.release.xcconfig"; path = "Pods/Target Support Files/Pods-scheduler/Pods-scheduler.release.xcconfig"; sourceTree = "<group>"; };
 		43D8B399CD18F7141F13BB07 /* Pods-scheduler-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scheduler-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-scheduler-tvOSTests/Pods-scheduler-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		45397354547D2B05230DE092 /* libPods-scheduler-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-scheduler-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49CE53F558CD48C8BFA405D3 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		4A491B239A3DAFF181B4056B /* libPods-scheduler.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-scheduler.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		573C425FE4714D838F8D7209 /* Pods-schedulerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-schedulerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-schedulerTests/Pods-schedulerTests.release.xcconfig"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
@@ -382,7 +392,7 @@
 		9EB4E4E2458E469DAEC0C8D9 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		A0B47347D997468C8718554A /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		A452F163B39E7754962CD12D /* libPods-scheduler-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-scheduler-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB0342C72016706700C14FC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AB5214CD201C2D5C00C2E64B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB91F369201A5D8F00883D3B /* scheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = scheduler.entitlements; path = scheduler/scheduler.entitlements; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		BF02D41798CD437EA19589AD /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
@@ -424,6 +434,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				FA539B65058D47FB993C34D5 /* libRNVectorIcons.a in Frameworks */,
 				63562C0334F3E45CBC1A595D /* libPods-scheduler.a in Frameworks */,
+				2D560A7A827E4D1DBBDB063F /* libRNFirebase.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,7 +548,6 @@
 			isa = PBXGroup;
 			children = (
 				AB91F369201A5D8F00883D3B /* scheduler.entitlements */,
-				AB0342C72016706700C14FC4 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -545,6 +555,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				AB5214CD201C2D5C00C2E64B /* GoogleService-Info.plist */,
 			);
 			name = scheduler;
 			sourceTree = "<group>";
@@ -633,6 +644,7 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				E3633010A1824D449625DDBB /* RNVectorIcons.xcodeproj */,
+				49CE53F558CD48C8BFA405D3 /* RNFirebase.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -678,6 +690,7 @@
 			isa = PBXGroup;
 			children = (
 				DD87FCEB9A014C1CACD33400 /* libRNVectorIcons.a */,
+				0A26A2BB176F47F0BA4FD3EB /* libRNFirebase.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -686,6 +699,14 @@
 			isa = PBXGroup;
 			children = (
 				AB03429120166DFD00C14FC4 /* libRNVectorIcons.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ABA6C2D8201A8DB400C65992 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ABA6C301201A8DB400C65992 /* libRNFirebase.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -820,6 +841,12 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 6B36S74UH9;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -895,6 +922,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = ABA6C2D8201A8DB400C65992 /* Products */;
+					ProjectRef = 49CE53F558CD48C8BFA405D3 /* RNFirebase.xcodeproj */;
 				},
 				{
 					ProductGroup = AB03428D20166DFC00C14FC4 /* Products */;
@@ -1171,6 +1202,13 @@
 			remoteRef = AB03429020166DFD00C14FC4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		ABA6C301201A8DB400C65992 /* libRNFirebase.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNFirebase.a;
+			remoteRef = ABA6C300201A8DB400C65992 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1196,6 +1234,7 @@
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				DF558BE28DA742798E02D14D /* Entypo.ttf in Resources */,
 				AB5C0AEEC0A049DE8C83E0DC /* EvilIcons.ttf in Resources */,
+				AB5214CE201C2D5C00C2E64B /* GoogleService-Info.plist in Resources */,
 				49708DF742C845FF905F68FC /* Feather.ttf in Resources */,
 				C737A4A500244EF184E7AA78 /* FontAwesome.ttf in Resources */,
 				66525169945F43CAA432B968 /* Foundation.ttf in Resources */,
@@ -1205,7 +1244,6 @@
 				0E2B2A384E9644E2B8B69993 /* Octicons.ttf in Resources */,
 				B0E45FAD7D094BE491DA5892 /* SimpleLineIcons.ttf in Resources */,
 				5B072506CCB547BBB857C185 /* Zocial.ttf in Resources */,
-				AB0342C82016706700C14FC4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1524,12 +1562,14 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = schedulerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1551,12 +1591,14 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = schedulerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1578,9 +1620,17 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 6B36S74UH9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseAuth/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks\"",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = scheduler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1603,9 +1653,17 @@
 				CODE_SIGN_ENTITLEMENTS = scheduler/scheduler.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6B36S74UH9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseAuth/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks\"",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = scheduler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1636,11 +1694,13 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = "scheduler-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1672,11 +1732,13 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = "scheduler-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1709,6 +1771,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.scheduler-tvOSTests";
@@ -1735,6 +1798,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";

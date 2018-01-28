@@ -1,5 +1,6 @@
 import SagaTester from 'redux-saga-tester';
 import sinon from 'sinon';
+import firebase from 'react-native-firebase';
 
 // import rootSaga from 'store/sagas';
 import IdentifyActions from 'store/ducks/identify';
@@ -13,8 +14,8 @@ describe('Testing Identify SAGA', () => {
     sagaTester.start([]);
   });
 
-  it.skip('can identify a phone number', () => {
-    const firebase = sinon.spy();
+  it('can identify a phone number', () => {
+    sinon.spy(firebase.auth(), 'verifyPhoneNumber');
   });
 });
 

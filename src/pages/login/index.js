@@ -51,27 +51,9 @@ class Login extends Component {
           keyboardType="phone-pad"
           onChangeText={phone => this.setState({ phone })}
         />
-        <View style={styles.dividerForm} />
-
-        <CustomTextInput
-          id="password"
-          iconName="lock"
-          placeholder="Sua senha"
-          secureTextEntry
-          onChangeText={password => this.setState({ password })}
-        />
         <View style={styles.dividerButton} />
 
         <Button text="Criar conta grátis" loading={loading} onPress={this.handleClick(loading)} />
-
-        <TouchableOpacity
-          onPress={() => {}}
-        >
-          <Text style={styles.haveAccountButton}>
-            Esqueci minha senha
-          </Text>
-        </TouchableOpacity>
-
       </View>
     );
   }
