@@ -8,6 +8,7 @@ import IdentifyActions from 'store/ducks/identify';
 
 /* Presentational */
 import { View, Text, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import Toast from 'react-native-simple-toast';
 
 import EntryHeader from 'components/EntryHeader';
 import CustomTextInput from 'components/CustomTextInput';
@@ -66,7 +67,7 @@ class Identify extends Component {
 
           <Button text="Entrar" loading={loading} onPress={this.handleClick(loading)} />
 
-          { error && <Text>ERRO!</Text>}
+          {error && Toast.showWithGravity('Número não identificado', Toast.LONG, Toast.TOP)}
         </View>
       </TouchableWithoutFeedback>
     );
