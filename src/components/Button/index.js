@@ -16,8 +16,8 @@ const Button = ({ text, loading, ...props }) => (
     {...props}
   >
     { loading
-        ? <ActivityIndicator size="small" color="white" />
-        : <Text style={styles.buttonText}>{text}</Text>}
+      ? <ActivityIndicator size="small" color="white" />
+      : <Text style={styles.buttonText}>{text}</Text>}
   </Element>
 );
 

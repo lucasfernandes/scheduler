@@ -3,7 +3,7 @@ import { createReducer, createActions } from 'reduxsauce';
 /* Types & Action Creators */
 
 const { Types, Creators } = createActions({
-  verifyRequest: ['code', 'confirmation'],
+  verifyRequest: ['code', 'phone'],
   verifySuccess: ['user'],
   verifyError: null,
 });

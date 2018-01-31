@@ -1,20 +1,30 @@
 import firebase from 'react-native-firebase';
-
 import { call, put } from 'redux-saga/effects';
 import ActionCreators from 'store/ducks/verify';
+import { NavigationActions } from 'react-navigation';
 
 export function* confirmationCode(action) {
-  // const auth = firebase.auth();
-
-  // console.tron.log(action.code);
-  console.tron.log(action.confirmation);
+  let user = null;
 
   try {
-    const result = yield call(action.confirmation, action.code);
-    console.tron.log(result);
+    const auth = firebase.auth();
+    const signIn = yield call(
+      [auth, auth.signInWithPhoneNumber],
+      action.phone,
+    );
 
-    const user = { foo: 'bar' };
-    yield put(ActionCreators.verifySuccess(user));
+    try {
+      user = yield call(
+        [signIn, signIn.confirm],
+        action.code,
+      );
+
+      yield put(ActionCreators.verifySuccess(user));
+      yield put(NavigationActions.navigate({ routeName: 'Scheduler' }));
+    } catch (error) {
+      console.tron.log(error.message);
+      yield put(ActionCreators.verifyError());
+    }
   } catch (error) {
     console.tron.log(error.message);
     yield put(ActionCreators.verifyError());

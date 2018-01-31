@@ -7,7 +7,14 @@ import { connect } from 'react-redux';
 import VerifyActions from 'store/ducks/verify';
 
 /* Presentational */
-import { View, Text, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Keyboard,
+  TouchableWithoutFeedback,
+  ActivityIndicator } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 
 import EntryHeader from 'components/EntryHeader';
 import CustomTextInput from 'components/CustomTextInput';
@@ -17,16 +24,32 @@ import Button from 'components/Button';
 import styles from './styles';
 
 class Verify extends Component {
+  static propTypes = {
+    verifyRequest: PropTypes.func.isRequired,
+    verify: PropTypes.shape({
+      user: PropTypes.object,
+      loading: PropTypes.bool,
+      error: PropTypes.bool,
+    }).isRequired,
+    identify: PropTypes.shape({
+      phone: PropTypes.string,
+    }).isRequired,
+    navigation: PropTypes.shape({
+      dispatch: PropTypes.func,
+    }).isRequired,
+  };
+
   state = {
     code: '',
+    backLoading: false,
   }
 
   request = () => {
     const { code } = this.state;
-    const { confirmation } = this.props.identify;
+    const { phone } = this.props.identify;
     const { verifyRequest } = this.props;
 
-    return verifyRequest(code, confirmation);
+    return verifyRequest(code, phone);
   };
 
   handleClick = loading => (
@@ -35,33 +58,50 @@ class Verify extends Component {
       : () => this.request()
   );
 
+  navigateBack = () => {
+    this.setState({ backLoading: true });
+    this.props.navigation
+      .dispatch(NavigationActions.back());
+  }
+
+  renderButtonBack = () => (
+    <TouchableOpacity
+      onPress={() => this.navigateBack()}
+      activeOpacity={0.6}
+    >
+      <Text style={styles.haveAccountButton}>
+        Alterar meu número de telefone
+      </Text>
+
+      { this.state.backLoading && <ActivityIndicator size="small" color="white" style={styles.loading} />}
+    </TouchableOpacity>
+  );
+
   renderContent = () => {
     const { loading } = this.props.verify;
 
     return (
-      <View style={[styles.container, styles.pageContainer]}>
-        <EntryHeader />
-        <CustomTextInput
-          id="code"
-          iconName="code"
-          placeholder="Código recebido por SMS"
-          keyboardType="numeric"
-          maxLength={6}
-          onChangeText={code => this.setState({ code })}
-        />
-        <View style={styles.dividerButton} />
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <View style={[styles.container, styles.pageContainer]}>
+          <EntryHeader />
+          <CustomTextInput
+            id="code"
+            iconName="code"
+            placeholder="Código recebido por SMS"
+            keyboardType="numeric"
+            maxLength={6}
+            secureTextEntry
+            onChangeText={code => this.setState({ code })}
+          />
+          <View style={styles.dividerButton} />
 
-        <Button text="Verificar Número" loading={loading} onPress={this.handleClick(loading)} />
+          <Button text="Verificar Número" loading={loading} onPress={this.handleClick(loading)} />
 
-        <TouchableOpacity
-          onPress={() => {}}
-        >
-          <Text style={styles.haveAccountButton}>
-            Alterar número de telefone
-          </Text>
-        </TouchableOpacity>
+          { this.renderButtonBack() }
 
-      </View>
+        </View>
+
+      </TouchableWithoutFeedback>
     );
   }
 

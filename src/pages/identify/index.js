@@ -7,40 +7,38 @@ import { connect } from 'react-redux';
 import IdentifyActions from 'store/ducks/identify';
 
 /* Presentational */
-import { View, Text } from 'react-native';
-import { NavigationActions } from 'react-navigation';
+import { View, Text, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import EntryHeader from 'components/EntryHeader';
 import CustomTextInput from 'components/CustomTextInput';
 import Button from 'components/Button';
 
-// import firebase from 'react-native-firebase';
-
 import styles from './styles';
 
 class Identify extends Component {
-  state = {
-    phone: '',
-  }
-
-  // async componentDidMount() {
-  //   try {
-  //     const confirmResult = await firebase.auth().signInWithPhoneNumber('+551992654828');
-  //     console.tron.log(confirmResult)
-
-
-  //   } catch (error) {
-  //     console.tron.log(error.message);
-  //   }
-  //   // .then(confirmResult => console.tron.log(confirmResult)
-  //   // .catch(error => console.tron.log(error)
-  // }
+  static propTypes = {
+    identifyRequest: PropTypes.func.isRequired,
+    identifyPhoneNumber: PropTypes.func.isRequired,
+    identify: PropTypes.shape({
+      confirmation: PropTypes.string,
+      loading: PropTypes.bool,
+      error: PropTypes.bool,
+      phone: PropTypes.string,
+    }).isRequired,
+    navigation: PropTypes.shape({
+      dispatch: PropTypes.func,
+    }).isRequired,
+  };
 
   request = () => {
-    const { phone } = this.state;
-    const { identifyRequest } = this.props;
+    const { phone } = this.props.identify;
+    const { dispatch } = this.props.navigation;
 
-    return identifyRequest(phone);
+    if (phone !== '') {
+      return this.props.identifyRequest(phone, dispatch);
+    }
+
+    return false;
   };
 
   handleClick = loading => (
@@ -49,40 +47,28 @@ class Identify extends Component {
       : () => this.request()
   );
 
-  navigateToVerify = () => {
-    const { confirmation } = this.props.identify;
-    const { dispatch } = this.props.navigation;
-
-    return dispatch(NavigationActions.navigate({
-      routeName: 'Verify',
-      params: { confirmation },
-    }));
-  }
-
   renderContent = () => {
-    const { loading, confirmation, error } = this.props.identify;
-    const { phone } = this.state;
-
-    if (confirmation) {
-      this.navigateToVerify();
-    }
+    const { loading, error } = this.props.identify;
 
     return (
-      <View style={[styles.container, styles.pageContainer]}>
-        <EntryHeader />
-        <CustomTextInput
-          id="phone"
-          iconName="phone"
-          placeholder="Seu número de telefone"
-          keyboardType="phone-pad"
-          onChangeText={phone => this.setState({ phone })}
-        />
-        <View style={styles.divider} />
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <View style={[styles.container, styles.pageContainer]}>
+          <EntryHeader />
+          <CustomTextInput
+            id="phone"
+            iconName="phone"
+            placeholder="Seu número de telefone"
+            keyboardType="phone-pad"
+            value={this.props.identify.phone}
+            onChangeText={phone => this.props.identifyPhoneNumber(phone)}
+          />
+          <View style={styles.divider} />
 
-        <Button text="Entrar" loading={loading} onPress={this.handleClick(loading)} />
+          <Button text="Entrar" loading={loading} onPress={this.handleClick(loading)} />
 
-        { error && <Text>ERRO!</Text>}
-      </View>
+          { error && <Text>ERRO!</Text>}
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 
@@ -96,7 +82,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  identifyRequest: phone => dispatch(IdentifyActions.identifyRequest(phone)),
+  identifyRequest: (phone, navigation) =>
+    dispatch(IdentifyActions.identifyRequest(phone, navigation)),
+  identifyPhoneNumber: phone => dispatch(IdentifyActions.identifyPhoneNumber(phone)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Identify);

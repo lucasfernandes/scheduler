@@ -15,6 +15,12 @@ const styles = StyleSheet.create({
     color: colors.pink,
     padding: metrics.baseSpace + 5,
   },
+
+  loading: {
+    position: 'absolute',
+    top: 23,
+    right: 0,
+  },
 });
 
 export default styles;

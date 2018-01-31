@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     color: colors.whiteOpacity,
     height: 54,
     borderRadius: metrics.baseRadius,
+    paddingRight: 25,
   },
 
   SectionStyle: {

@@ -2,19 +2,20 @@ import { StackNavigator } from 'react-navigation';
 
 import Identify from 'pages/identify';
 import Verify from 'pages/verify';
-import Login from 'pages/login';
+import Scheduler from 'pages/scheduler';
 
 const IdentifyRoutes = StackNavigator({
   Identify: { screen: Identify },
   Verify: { screen: Verify },
-  Login: { screen: Login },
 }, {
   cardStyle: { shadowColor: 'transparent' },
   headerMode: 'none',
+  transitionConfig: () => ({ screenInterpolator: () => null }),
 });
 
 const Routes = StackNavigator({
   Identify: { screen: IdentifyRoutes },
+  Scheduler: { screen: Scheduler },
 }, {
   headerMode: 'none',
   cardStyle: { shadowColor: 'transparent' },
