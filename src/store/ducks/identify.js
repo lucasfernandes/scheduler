@@ -16,7 +16,6 @@ export default Creators;
 /* Initial State */
 
 export const INITIAL_STATE = {
-  confirmation: null,
   phone: '',
   loading: false,
   error: false,
