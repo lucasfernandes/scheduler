@@ -15,7 +15,6 @@ import {
   TouchableWithoutFeedback,
   ActivityIndicator } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import Toast from 'react-native-simple-toast';
 
 import EntryHeader from 'components/EntryHeader';
 import CustomTextInput from 'components/CustomTextInput';
@@ -99,7 +98,7 @@ class Verify extends Component {
           <Button text="Verificar Número" loading={loading} onPress={this.handleClick(loading)} />
 
           { this.renderButtonBack() }
-          {error && Toast.showWithGravity('Número não confirmado, tente novamente.', Toast.LONG, Toast.TOP)}
+          {/* {error && Toast.showWithGravity('Número não confirmado, tente novamente.', Toast.LONG, Toast.TOP)} */}
         </View>
         
 

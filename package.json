@@ -10,9 +10,7 @@
     "prop-types": "^15.6.0",
     "react": "16.2.0",
     "react-native": "0.52.0",
-    "react-native-fetch-blob": "^0.10.8",
     "react-native-firebase": "^3.2.2",
-    "react-native-simple-toast": "^0.0.7",
     "react-native-vector-icons": "^4.5.0",
     "react-navigation": "^1.0.0-beta.27",
     "react-redux": "^5.0.6",
@@ -21,7 +19,6 @@
     "reactotron-redux-saga": "^1.13.0",
     "redux": "^3.7.2",
     "redux-persist": "^5.4.0",
-    "redux-persist-filesystem-storage": "^1.1.1",
     "redux-saga": "^0.16.0",
     "reduxsauce": "^0.7.0"
   },

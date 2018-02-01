@@ -2,6 +2,10 @@ import colors from './colors';
 import metrics from './metrics';
 
 const general = {
+  masterContainer: {
+    flex: 1,
+  },
+
   safeArea: {
     flex: 1,
     backgroundColor: colors.background,

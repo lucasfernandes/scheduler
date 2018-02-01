@@ -18,7 +18,7 @@ export default Creators;
 export const INITIAL_STATE = {
   phone: '',
   loading: false,
-  error: false,
+  error: true,
 };
 
 /* Reducers */

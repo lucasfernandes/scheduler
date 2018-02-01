@@ -7,8 +7,7 @@ import { connect } from 'react-redux';
 import IdentifyActions from 'store/ducks/identify';
 
 /* Presentational */
-import { View, Text, Keyboard, TouchableWithoutFeedback } from 'react-native';
-import Toast from 'react-native-simple-toast';
+import { View, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import EntryHeader from 'components/EntryHeader';
 import CustomTextInput from 'components/CustomTextInput';
@@ -67,7 +66,8 @@ class Identify extends Component {
 
           <Button text="Entrar" loading={loading} onPress={this.handleClick(loading)} />
 
-          {error && Toast.showWithGravity('Número não identificado', Toast.LONG, Toast.TOP)}
+          {/* {error && Toast.showWithGravity('Número não identificado', Toast.LONG, Toast.TOP)} */}
+          {/* {error && <Toast color="error" />} */}
         </View>
       </TouchableWithoutFeedback>
     );
