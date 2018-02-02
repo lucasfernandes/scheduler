@@ -3,6 +3,7 @@ import storage from 'redux-persist/es/storage';
 
 /* Reducers */
 import navReducer from 'navigation/reducer';
+import { reducer as toast } from './ducks/toast';
 import { reducer as identify } from './ducks/identify';
 import { reducer as verify } from './ducks/verify';
 
@@ -13,9 +14,9 @@ import configurePersistor from './configurePersistor';
 const rootReducer = persistCombineReducers({
   key: 'root',
   storage,
-  blacklist: ['identify'],
 }, {
   nav: navReducer,
+  toast,
   identify,
   verify,
 });

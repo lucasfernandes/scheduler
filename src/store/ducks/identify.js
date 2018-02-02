@@ -4,7 +4,7 @@ import { createReducer, createActions } from 'reduxsauce';
 
 const { Types, Creators } = createActions({
   identifyRequest: ['phone', 'dispatch'],
-  identifySuccess: ['phone'],
+  identifySuccess: ['phone', 'verificationId'],
   identifyError: null,
   identifyPhoneNumber: ['phone'],
   identifyReset: null,
@@ -17,6 +17,7 @@ export default Creators;
 
 export const INITIAL_STATE = {
   phone: '',
+  verificationId: null,
   loading: false,
   error: true,
 };
@@ -31,6 +32,7 @@ export const request = state => ({
 export const success = (state, action) => ({
   ...state,
   phone: action.phone,
+  verificationId: action.verificationId,
   loading: false,
   error: false,
 });

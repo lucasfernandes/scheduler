@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 /* Redux */
 import { connect } from 'react-redux';
 import IdentifyActions from 'store/ducks/identify';
+import ToastActions from 'store/ducks/toast';
 
 /* Presentational */
 import { View, Keyboard, TouchableWithoutFeedback } from 'react-native';
@@ -48,7 +49,7 @@ class Identify extends Component {
   );
 
   renderContent = () => {
-    const { loading, error } = this.props.identify;
+    const { loading } = this.props.identify;
 
     return (
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -65,9 +66,6 @@ class Identify extends Component {
           <View style={styles.divider} />
 
           <Button text="Entrar" loading={loading} onPress={this.handleClick(loading)} />
-
-          {/* {error && Toast.showWithGravity('Número não identificado', Toast.LONG, Toast.TOP)} */}
-          {/* {error && <Toast color="error" />} */}
         </View>
       </TouchableWithoutFeedback>
     );
@@ -86,6 +84,13 @@ const mapDispatchToProps = dispatch => ({
   identifyRequest: (phone, navigation) =>
     dispatch(IdentifyActions.identifyRequest(phone, navigation)),
   identifyPhoneNumber: phone => dispatch(IdentifyActions.identifyPhoneNumber(phone)),
+  toastShow: (message, icon, color, style) =>
+    dispatch(ToastActions.toastShow(message, icon, color, style)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Identify);
+
+// message: undefined,
+// icon: undefined,
+// color: undefined,
+// style: undefined,

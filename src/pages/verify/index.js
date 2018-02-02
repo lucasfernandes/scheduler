@@ -33,6 +33,7 @@ class Verify extends Component {
     }).isRequired,
     identify: PropTypes.shape({
       phone: PropTypes.string,
+      verificationId: PropTypes.string,
     }).isRequired,
     navigation: PropTypes.shape({
       dispatch: PropTypes.func,
@@ -46,10 +47,10 @@ class Verify extends Component {
 
   request = () => {
     const { code } = this.state;
-    const { phone } = this.props.identify;
+    const { phone, verificationId } = this.props.identify;
     const { verifyRequest } = this.props;
 
-    return verifyRequest(code, phone);
+    return verifyRequest(code, verificationId);
   };
 
   handleClick = loading => (

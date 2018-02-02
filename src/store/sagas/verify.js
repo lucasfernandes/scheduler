@@ -2,32 +2,30 @@ import firebase from 'react-native-firebase';
 import { call, put } from 'redux-saga/effects';
 import ActionCreators from 'store/ducks/verify';
 import { NavigationActions } from 'react-navigation';
+import ToastActionCreators from 'store/ducks/toast';
 
 export function* confirmationCode(action) {
-  let user = null;
+  const { auth } = firebase;
+  const { PhoneAuthProvider } = auth;
+  const { signInWithCredential } = auth();
 
   try {
-    const auth = firebase.auth();
-    const signIn = yield call(
-      [auth, auth.signInWithPhoneNumber],
-      action.phone,
+    const credential = yield call(
+      [PhoneAuthProvider, PhoneAuthProvider.credential],
+      action.verificationId,
+      action.code,
     );
 
-    try {
-      user = yield call(
-        [signIn, signIn.confirm],
-        action.code,
-      );
+    const user = yield call(
+      [auth(), signInWithCredential],
+      credential,
+    );
 
-      yield put(ActionCreators.verifySuccess(user));
-      yield put(NavigationActions.navigate({ routeName: 'Scheduler' }));
-    } catch (error) {
-      console.tron.log(error.message);
-      yield put(ActionCreators.verifyError());
-    }
+    yield put(ActionCreators.verifySuccess(user));
+    yield put(NavigationActions.navigate({ routeName: 'Scheduler' }));
   } catch (error) {
-    console.tron.log(error.message);
     yield put(ActionCreators.verifyError());
+    yield put(ToastActionCreators.toastShow(error.message, 'times-circle', 'error'));
   }
 }
 

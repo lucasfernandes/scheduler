@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: metrics.statusBarHeight + 10,
-    // height: 62 + metrics.statusBarHeight,
+    padding: metrics.baseSpace,
   },
 
   message: {

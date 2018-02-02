@@ -2,6 +2,10 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
+/* Redux */
+import { connect } from 'react-redux';
+import ToastActions from 'store/ducks/toast';
+
 /* Presentational */
 import { Text, Animated } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -16,6 +20,7 @@ class Toast extends Component {
     icon: PropTypes.string,
     children: PropTypes.node,
     style: Text.propTypes.style,
+    toastHide: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -32,28 +37,33 @@ class Toast extends Component {
 
   componentDidMount() {
     Animated.sequence([
-      Animated.timing(this.state.offset.y, {
-        toValue: 62 + metrics.statusBarHeight,
-        duration: 300,
-      }),
-
-      Animated.timing(this.state.opacity, {
-        toValue: 1,
-        duration: 200,
-      }),
+      Animated.parallel([
+        Animated.timing(this.state.opacity, {
+          toValue: 1,
+          duration: 150,
+        }),
+        Animated.timing(this.state.offset.y, {
+          toValue: 62 + metrics.statusBarHeight,
+          duration: 150,
+        }),
+      ]),
 
       Animated.delay(5000),
 
-      Animated.timing(this.state.opacity, {
-        toValue: 0,
-        duration: 150,
-      }),
+      Animated.parallel([
+        Animated.timing(this.state.opacity, {
+          toValue: 0,
+          duration: 150,
+        }),
 
-      Animated.timing(this.state.offset.y, {
-        toValue: 0,
-        duration: 200,
-      }),
-    ]).start();
+        Animated.timing(this.state.offset.y, {
+          toValue: 0,
+          duration: 150,
+        }),
+      ]),
+    ]).start(() => {
+      this.props.toastHide();
+    });
   }
 
   render() {
@@ -68,7 +78,7 @@ class Toast extends Component {
           styles.container,
           styles[`bg-color-${color}`],
           style,
-          { height: this.state.offset.y },
+          { minHeight: this.state.offset.y },
           { opacity: this.state.opacity },
         ]}
       >
@@ -82,4 +92,8 @@ class Toast extends Component {
   }
 }
 
-export default Toast;
+const mapDispatchToProps = dispatch => ({
+  toastHide: () => dispatch(ToastActions.toastHide()),
+});
+
+export default connect(null, mapDispatchToProps)(Toast);

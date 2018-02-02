@@ -5,16 +5,15 @@ import React from 'react';
 /* Redux */
 import { connect } from 'react-redux';
 
-
 /* Presentational */
-import { SafeAreaView, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { addNavigationHelpers } from 'react-navigation';
 import Toast from 'components/Toast';
 
 import Routes from './routes';
 import styles from './styles';
 
-const Navigator = ({ dispatch, nav }) => (
+const Navigator = ({ dispatch, nav, toast }) => (
   <SafeAreaView
     style={styles.safeArea}
   >
@@ -24,9 +23,11 @@ const Navigator = ({ dispatch, nav }) => (
         state: nav,
       })}
     />
-    <Toast color="success" icon="check-circle" style={styles.toast}>
-      Aqui é um toast galera!
-    </Toast>
+
+    { toast.show &&
+      <Toast color={toast.color} icon={toast.icon} style={[styles.toast]}>
+        {toast.message}
+      </Toast> }
   </SafeAreaView>
 );
 
@@ -36,29 +37,13 @@ Navigator.propTypes = {
     index: PropTypes.number,
     routes: PropTypes.array,
   }).isRequired,
+  toast: PropTypes.shape({}).isRequired,
 };
 
 const mapStateToProps = state => ({
   nav: state.nav,
+  toast: state.toast,
 });
 
 export default connect(mapStateToProps)(Navigator);
 
-
-
-// <View style={styles.masterContainer}>
-//     <Toast color="success" icon="check-circle">
-//       Aqui é um toast galera!
-//     </Toast>
-
-//     <SafeAreaView
-//       style={styles.safeArea}
-//     >
-//       <Routes
-//         navigation={addNavigationHelpers({
-//           dispatch,
-//           state: nav,
-//         })}
-//       />
-//     </SafeAreaView>
-//   </View>
