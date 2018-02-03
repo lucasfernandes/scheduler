@@ -61,5 +61,8 @@
       "src/store/ducks/**/*.{js,jsx}",
       "src/store/sagas/**/*.{js,jsx}"
     ]
+  },
+  "rnpm":{
+    "assets":["./src/assets/fonts/"]
   }
 }
