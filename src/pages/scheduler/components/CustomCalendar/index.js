@@ -1,27 +1,51 @@
 /* Core */
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
 
 /* Presentational */
 import { Calendar } from 'react-native-calendars';
 
+import { colors } from 'styles';
+
 import styles from './styles';
 import theme from './theme';
 
-const CustomCalendar = ({ markedDates }) => (
-  <Calendar
-    style={styles.calendar}
-    theme={theme}
-    markedDates={markedDates}
-  />
-);
 
-CustomCalendar.propTypes = {
-  markedDates: (PropTypes.shape({})),
-};
+class CustomCalendar extends Component {
+  static propTypes = {
+    markedDates: PropTypes.shape({}),
+  };
 
-CustomCalendar.defaultProps = {
-  markedDates: {},
-};
+  static defaultProps = {
+    markedDates: {},
+  };
+
+  state = {
+    markedDates: {},
+  };
+
+  componentWillMount() {
+    this.setState({ markedDates: this.props.markedDates });
+  }
+
+  selectDay = (day) => {
+    const date = { [day.dateString]: { selected: true, selectedColor: colors.add } };
+
+    this.setState({ markedDates: { ...date, ...this.props.markedDates } });
+  };
+
+  render() {
+    const { markedDates } = this.state;
+
+    return (
+      <Calendar
+        style={styles.calendar}
+        theme={theme}
+        markedDates={markedDates}
+        onDayPress={day => this.selectDay(day)}
+      />
+    );
+  }
+}
 
 export default CustomCalendar;

@@ -12,7 +12,8 @@ import { colors } from 'styles';
 import styles from './styles';
 
 this.loadMarkedDates = () => ({
-  '2018-02-16': { selected: true, selectedColor: colors.add },
+  '2018-02-16': { marked: true, selectedColor: colors.add },
+  '2018-02-12': { marked: true, selectedColor: colors.add },
 });
 
 const Scheduler = () => (

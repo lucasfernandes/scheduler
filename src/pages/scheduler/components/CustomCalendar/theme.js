@@ -6,7 +6,7 @@ export default {
   // textSectionTitleColor: '#b6c1cd',
   selectedDayBackgroundColor: colors.add,
   selectedDayTextColor: colors.white,
-  // todayTextColor: colors.white,
+  todayTextColor: colors.add,
   // dayTextColor: colors.lighterWhiteOpacity,
   textDisabledColor: colors.disabledDays,
   // dotColor: '#00adf5',
