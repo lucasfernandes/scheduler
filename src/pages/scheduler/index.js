@@ -4,8 +4,9 @@ import React from 'react';
 /* Presentational */
 import { View, Text, ScrollView } from 'react-native';
 
-import CustomCalendar from 'pages/scheduler/components/CustomCalendar';
 import Header from 'components/Header';
+import CustomCalendar from 'pages/scheduler/components/CustomCalendar';
+import Events from 'pages/scheduler/components/Events';
 
 import { colors } from 'styles';
 
@@ -21,7 +22,9 @@ const Scheduler = () => (
     <Header newEvent account />
     <ScrollView style={styles.eventsContainer}>
       <CustomCalendar markedDates={this.loadMarkedDates()} />
-      <Text style={styles.title}>PASSOU, UFA!</Text>
+      <View style={styles.eventsContainer}>
+        <Events />
+      </View>
     </ScrollView>
   </View>
 );

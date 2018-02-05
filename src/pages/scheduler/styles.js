@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
   },
 
   eventsContainer: {
-    height: 150,
+    // height: 150,
+    flex: 1,
   },
 });
 

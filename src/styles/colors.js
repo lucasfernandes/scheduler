@@ -10,9 +10,12 @@ export default {
   white: '#FFF',
   whiteOpacity: 'rgba(255, 255, 255, 0.6)',
   lighterWhiteOpacity: 'rgba(255, 255, 255, 0.8)',
+  gray: '#999',
   black: '#000',
   darkPurple: '#8448AC',
   pink: '#E8C7FF',
   red: '#E35E5E',
   green: '#49C7A7',
+
+  transparent: 'transparent',
 };
