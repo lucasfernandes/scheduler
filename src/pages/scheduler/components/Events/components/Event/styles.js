@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
   swipeout: {
     backgroundColor: colors.transparent,
     marginTop: metrics.smallSpace / 1.5,
-    // marginHorizontal: metrics.baseSpace,
   },
 
   eventContainer: {
@@ -28,13 +27,13 @@ const styles = StyleSheet.create({
     fontSize: fonts.regular,
     fontWeight: 'bold',
     lineHeight: 25,
+    color: colors.darkPurple,
   },
 
   sub: {
     fontFamily: 'Helvetica Neue',
     fontSize: fonts.regular,
     color: colors.gray,
-    // lineHeight: 22,
   },
 
   time: {

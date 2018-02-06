@@ -14,6 +14,9 @@ const Events = () => (
     <Event />
     <Event />
     <Event />
+    <Event />
+    <Event />
+    <Event />
   </View>
 );
 

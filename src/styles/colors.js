@@ -13,6 +13,7 @@ export default {
   darkPurple: '#8448AC',
   pink: '#E8C7FF',
   red: '#E35E5E',
+  lightGreen: '#C9FFD9',
   green: '#49C7A7',
   gray: '#999',
   darkGray: '#666',
