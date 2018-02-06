@@ -9,7 +9,8 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 
 /* Redux */
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
+// import { NavigationActions } from 'react-navigation';
+import ModalActions from 'store/ducks/modal';
 
 import { colors } from 'styles';
 
@@ -20,7 +21,11 @@ class Header extends Component {
     backButton: PropTypes.bool,
     newEvent: PropTypes.bool,
     account: PropTypes.bool,
-    dispatch: PropTypes.func.isRequired,
+    // dispatch: PropTypes.func.isRequired,
+    modal: PropTypes.shape({
+      show: PropTypes.bool,
+    }).isRequired,
+    modalShow: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -30,10 +35,12 @@ class Header extends Component {
   };
 
   navigateBack = () => {
-    const { dispatch } = this.props;
+    // const { dispatch } = this.props;
 
-    return dispatch(NavigationActions.back());
+    // return dispatch(NavigationActions.back());
   }
+
+  modalShow = () => this.props.modal.show === false && this.props.modalShow();
 
   renderBackButton = () => (
     <TouchableOpacity onPress={this.navigateBack} activeOpacity={0.6}>
@@ -42,7 +49,10 @@ class Header extends Component {
   );
 
   renderNewEventButton = () => (
-    <TouchableOpacity onPress={() => {}} activeOpacity={0.6}>
+    <TouchableOpacity
+      onPress={() => this.props.modalShow()}
+      activeOpacity={0.6}
+    >
       <View style={styles.circle}>
         <FeatherIcon name="plus" size={14} color={colors.white} />
       </View>
@@ -60,15 +70,23 @@ class Header extends Component {
       <View style={styles.headerContainer}>
         <View style={styles.leftButton}>
           { this.props.backButton && this.renderBackButton() }
-          { this.props.newEvent && this.renderNewEventButton()}
+          { this.props.newEvent && this.renderNewEventButton() }
         </View>
         <Text style={styles.title}>SCHEDULER</Text>
         <View style={styles.rightButton}>
-          { this.props.account && this.renderAccountButton()}
+          { this.props.account && this.renderAccountButton() }
         </View>
       </View>
     );
   }
 }
 
-export default connect()(Header);
+const mapStateToProps = state => ({
+  modal: state.modal,
+});
+
+const mapDispatchToProps = dispatch => ({
+  modalShow: () => dispatch(ModalActions.modalShow()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

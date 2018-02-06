@@ -16,6 +16,14 @@ const styles = StyleSheet.create({
     paddingRight: 25,
   },
 
+  spaceLeftInside: {
+    paddingLeft: metrics.baseSpace,
+  },
+
+  dark: {
+    color: colors.gray,
+  },
+
   SectionStyle: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -25,9 +33,17 @@ const styles = StyleSheet.create({
     borderRadius: metrics.baseRadius,
   },
 
+  sectionDark: {
+    backgroundColor: colors.grayPlaceholder,
+  },
+
   icon: {
     margin: metrics.baseSpace,
     color: colors.whiteOpacity,
+  },
+
+  iconDark: {
+    color: colors.gray,
   },
 });
 

@@ -7,6 +7,7 @@ import { View, Text, ScrollView } from 'react-native';
 import Header from 'components/Header';
 import CustomCalendar from 'pages/scheduler/components/CustomCalendar';
 import Events from 'pages/scheduler/components/Events';
+import ModalBox from 'pages/scheduler/components/ModalBox';
 
 import { colors } from 'styles';
 
@@ -26,6 +27,7 @@ const Scheduler = () => (
         <Events />
       </View>
     </ScrollView>
+    <ModalBox />
   </View>
 );
 
