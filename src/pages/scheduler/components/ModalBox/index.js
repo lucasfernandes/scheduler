@@ -45,33 +45,36 @@ class ModalBox extends Component {
             <CustomTextInput
               iconName="calendar"
               inputColor="dark"
+              placeholder="Selecione a data e horário"
               placeholderTextColor={colors.gray}
               spaceBetween={10}
-              />
+            />
             <CustomTextInput
               iconName="calendar"
               inputColor="dark"
+              placeholder="Qual o nome do evento?"
               placeholderTextColor={colors.gray}
               spaceBetween={10}
               disableIcon
-              />
+            />
             <CustomTextInput
               iconName="calendar"
               inputColor="dark"
+              placeholder="Onde irá ocorrer?"
               placeholderTextColor={colors.gray}
               spaceBetween={15}
               disableIcon
-              />
+            />
 
             <Button
               text="Criar evento"
               onPress={() => {}}
-              />
+            />
 
             <TouchableOpacity
               style={styles.cancel}
               onPress={() => this.props.modalHide()}
-              >
+            >
               <Text style={styles.cancelText}>Cancelar</Text>
             </TouchableOpacity>
 
