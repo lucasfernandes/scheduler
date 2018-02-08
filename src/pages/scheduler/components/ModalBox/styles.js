@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
 
   inputsContainer: {
-    flex: 1,
+    alignSelf: 'stretch',
     alignItems: 'center',
   },
 

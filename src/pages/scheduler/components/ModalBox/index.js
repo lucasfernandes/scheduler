@@ -13,6 +13,7 @@ import { colors, metrics } from 'styles';
 
 import CustomTextInput from 'components/CustomTextInput';
 import Button from 'components/Button';
+import DateTimePicker from 'pages/scheduler/components/ModalBox/components/DateTimePicker';
 
 import styles from './styles';
 
@@ -42,13 +43,8 @@ class ModalBox extends Component {
           </View>
 
           <View style={styles.inputsContainer}>
-            <CustomTextInput
-              iconName="calendar"
-              inputColor="dark"
-              placeholder="Selecione a data e horário"
-              placeholderTextColor={colors.gray}
-              spaceBetween={10}
-            />
+            <DateTimePicker />
+
             <CustomTextInput
               iconName="calendar"
               inputColor="dark"
