@@ -25,8 +25,9 @@ export default class DateTimePicker extends Component {
     return (
       <View style={{ alignSelf: 'stretch' }}>
         <DatePicker
+          {...this.props}
           style={styles.pickerContainer}
-          date={this.state.datetime}
+          // date={this.state.datetime}
           mode="datetime"
           placeholder="Selecione a data e horário"
           format="DD/MM/YYYY HH:mm"
@@ -64,7 +65,7 @@ export default class DateTimePicker extends Component {
               marginLeft: 38,
             }
           }}
-          onDateChange={datetime => this.setState({ datetime })}
+          // onDateChange={datetime => this.setState({ datetime })}
         />
         <Icon name="calendar" size={20} style={styles.icon} />
       </View>

@@ -7,12 +7,11 @@ import { connect } from 'react-redux';
 import ToastActions from 'store/ducks/toast';
 
 /* Presentational */
-import { Text, Animated } from 'react-native';
+import { Text, Animated, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { metrics } from 'styles';
 
 import styles from './styles';
-
 
 class Toast extends Component {
   static propTypes = {
@@ -82,8 +81,14 @@ class Toast extends Component {
           { opacity: this.state.opacity },
         ]}
       >
-        <Icon name={icon} size={20} color="white" />
-        <Text style={styles.message}>
+        <View style={styles.messageContainer}>
+          <Icon name={icon} size={20} color="white" />
+          <Text style={styles.message}>
+            Alguns erros foram encontrados:
+            {/* { children } */}
+          </Text>
+        </View>
+        <Text style={styles.errors}>
           { children }
         </Text>
       </Animated.View>

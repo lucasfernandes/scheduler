@@ -4,79 +4,31 @@ import PropTypes from 'prop-types';
 
 /* Redux */
 import { connect } from 'react-redux';
-import ModalActions from 'store/ducks/modal';
 
 /* Presentational */
-import { View, Text, Modal, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { View, Text, Modal, ActivityIndicator } from 'react-native';
+import { colors } from 'styles';
 
-import { colors, metrics } from 'styles';
+import Toast from 'components/Toast';
+import Form from './components/Form';
 
-import CustomTextInput from 'components/CustomTextInput';
-import Button from 'components/Button';
-import DateTimePicker from 'pages/scheduler/components/ModalBox/components/DateTimePicker';
 
 import styles from './styles';
 
 class ModalBox extends Component {
   static propTypes = {
-    modalHide: PropTypes.func.isRequired,
     modal: PropTypes.shape({
       show: PropTypes.bool,
     }).isRequired,
   };
 
   state = {
-    loading: false,
+    // loading: false,
   }
 
   renderContent = () => (
-
     <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => this.props.modalHide()}
-        style={styles.close}
-      >
-        <View style={styles.contentContainer}>
-
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>Adicionar Evento</Text>
-          </View>
-
-          <View style={styles.inputsContainer}>
-            <DateTimePicker />
-
-            <CustomTextInput
-              iconName="calendar"
-              inputColor="dark"
-              placeholder="Qual o nome do evento?"
-              placeholderTextColor={colors.gray}
-              spaceBetween={10}
-              disableIcon
-            />
-            <CustomTextInput
-              iconName="calendar"
-              inputColor="dark"
-              placeholder="Onde irá ocorrer?"
-              placeholderTextColor={colors.gray}
-              spaceBetween={15}
-              disableIcon
-            />
-
-            <Button
-              text="Criar evento"
-              onPress={() => {}}
-            />
-
-            <TouchableOpacity
-              style={styles.cancel}
-              onPress={() => this.props.modalHide()}
-            >
-              <Text style={styles.cancelText}>Cancelar</Text>
-            </TouchableOpacity>
-
-          </View>
-        </View>
-      </TouchableOpacity>
+      <Form />
     </View>
   );
 
@@ -90,6 +42,8 @@ class ModalBox extends Component {
   );
 
   render() {
+    const { toast } = this.props;
+
     return (
       <Modal
         style={styles.container}
@@ -97,6 +51,10 @@ class ModalBox extends Component {
         transparent
         visible={this.props.modal.show}
       >
+        {/* { toast.show && toast.modal &&
+        <Toast color={toast.color} icon={toast.icon} style={styles.toast}>
+          {toast.message}
+        </Toast> } */}
         { this.renderContent()}
       </Modal>
     );
@@ -105,11 +63,8 @@ class ModalBox extends Component {
 
 const mapStateToProps = state => ({
   modal: state.modal,
+  toast: state.toast,
 });
 
-const mapDispatchToProps = dispatch => ({
-  modalHide: () => dispatch(ModalActions.modalHide()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ModalBox);
+export default connect(mapStateToProps)(ModalBox);
 

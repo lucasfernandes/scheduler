@@ -7,6 +7,7 @@ import { reducer as toast } from './ducks/toast';
 import { reducer as identify } from './ducks/identify';
 import { reducer as verify } from './ducks/verify';
 import { reducer as modal } from './ducks/modal';
+import { reducer as events } from './ducks/events';
 
 import configureStore from './configureStore';
 import rootSaga from './sagas';
@@ -21,6 +22,7 @@ const rootReducer = persistCombineReducers({
   identify,
   verify,
   modal,
+  events,
 });
 
 const store = configureStore(rootReducer, rootSaga);

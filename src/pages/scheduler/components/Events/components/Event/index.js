@@ -12,11 +12,13 @@ import { colors } from 'styles';
 import styles from './styles';
 
 export default class Event extends Component {
-  static propTypes = {};
-
-  static defaultProps = {};
-
-  static state = {}
+  static propTypes = {
+    event: PropTypes.shape({
+      name: PropTypes.string,
+      place: PropTypes.string,
+      date: PropTypes.string,
+    }).isRequired,
+  };
 
   leftButtons = () => (
     [{
@@ -33,6 +35,8 @@ export default class Event extends Component {
   );
 
   render() {
+    const { event } = this.props;
+
     return (
       <Swipeout
         style={styles.swipeout}
@@ -43,10 +47,10 @@ export default class Event extends Component {
       >
         <View style={styles.eventContainer}>
           <View style={styles.eventText}>
-            <Text style={styles.title}>Criar minha aplicação do desafio</Text>
-            <Text style={styles.sub}>Trabalho</Text>
+            <Text style={styles.title}>{event.name}</Text>
+            <Text style={styles.sub}>{event.place}</Text>
           </View>
-          <Text style={styles.time}>7h</Text>
+          <Text style={styles.time}>{event.time}h</Text>
         </View>
       </Swipeout>
     );

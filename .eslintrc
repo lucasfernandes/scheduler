@@ -22,7 +22,8 @@
     "react/no-did-mount-set-state": "off",
     "react/no-typos": "off",
     "no-unused-expressions" : "error",
-    "jsx-a11y/href-no-hash": "off"
+    "jsx-a11y/href-no-hash": "off",
+    "no-confusing-arrow": "off"
   },
   "settings": {
     "import/resolver": {

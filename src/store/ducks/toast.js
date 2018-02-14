@@ -3,7 +3,7 @@ import { createReducer, createActions } from 'reduxsauce';
 /* Types & Action Creators */
 
 const { Types, Creators } = createActions({
-  toastShow: ['message', 'icon', 'color', 'style'],
+  toastShow: ['message', 'icon', 'color', 'style', 'modal'],
   toastHide: null,
 });
 
@@ -18,12 +18,14 @@ export const INITIAL_STATE = {
   icon: undefined,
   color: undefined,
   style: undefined,
+  modal: undefined,
 };
 
 /* Reducers */
 
 export const show = (state, action) => ({
   show: true,
+  modal: action.modal,
   message: action.message,
   icon: action.icon,
   color: action.color,
@@ -31,7 +33,7 @@ export const show = (state, action) => ({
 });
 
 export const hide = () => ({
-  INITIAL_STATE,
+  // ...INITIAL_STATE,
 });
 
 /* Reducers to types */

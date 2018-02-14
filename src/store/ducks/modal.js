@@ -23,7 +23,7 @@ export const show = () => ({
 });
 
 export const hide = () => ({
-  show: INITIAL_STATE.show,
+  show: false,
 });
 
 /* Reducers to types */

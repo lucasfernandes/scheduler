@@ -7,9 +7,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "formik": "^0.11.7",
+    "lodash": "^4.17.5",
+    "metro": "^0.25.1",
     "prop-types": "^15.6.0",
     "react": "16.2.0",
-    "react-native": "0.52.0",
+    "react-native": "^0.52.0",
     "react-native-calendars": "^1.17.0",
     "react-native-datepicker": "^1.6.0",
     "react-native-firebase": "^3.2.2",
@@ -17,13 +20,16 @@
     "react-native-vector-icons": "^4.5.0",
     "react-navigation": "^1.0.0-beta.27",
     "react-redux": "^5.0.6",
+    "react-timer-mixin": "^0.13.3",
     "reactotron-react-native": "^1.14.0",
     "reactotron-redux": "^1.13.0",
     "reactotron-redux-saga": "^1.13.0",
     "redux": "^3.7.2",
     "redux-persist": "^5.4.0",
     "redux-saga": "^0.16.0",
-    "reduxsauce": "^0.7.0"
+    "redux-saga-firebase": "^0.11.0",
+    "reduxsauce": "^0.7.0",
+    "yup": "^0.24.0"
   },
   "devDependencies": {
     "axios-mock-adapter": "^1.11.0",
