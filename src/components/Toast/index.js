@@ -42,7 +42,9 @@ class Toast extends Component {
           duration: 150,
         }),
         Animated.timing(this.state.offset.y, {
-          toValue: 62 + metrics.statusBarHeight,
+          toValue: metrics.screenHeight === metrics.iosXHeight
+            ? metrics.statusBarHeight + 67
+            : metrics.statusBarHeight + 62,
           duration: 150,
         }),
       ]),
@@ -84,13 +86,13 @@ class Toast extends Component {
         <View style={styles.messageContainer}>
           <Icon name={icon} size={20} color="white" />
           <Text style={styles.message}>
-            Alguns erros foram encontrados:
-            {/* { children } */}
+            {/* Alguns erros foram encontrados: */}
+            { children }
           </Text>
         </View>
-        <Text style={styles.errors}>
+        {/* <Text style={styles.errors}>
           { children }
-        </Text>
+        </Text> */}
       </Animated.View>
 
     );

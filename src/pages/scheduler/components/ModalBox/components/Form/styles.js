@@ -5,15 +5,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.transparent,
+    // backgroundColor: 'red',
     padding: metrics.baseSpace,
+    // height: 850,
+    // alignItems: 'center',
+    justifyContent: 'center',
   },
 
   contentContainer: {
-    flex: 1,
+    // flex: 1,
     paddingHorizontal: metrics.baseSpace,
     paddingVertical: (metrics.baseSpace * 2) + 10,
     // margin: metrics.baseSpace,
-    marginVertical: 180,
+    // marginVertical: 180,
     borderRadius: metrics.baseRadius,
     backgroundColor: colors.white,
   },

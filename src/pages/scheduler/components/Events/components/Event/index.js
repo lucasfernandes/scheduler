@@ -50,7 +50,7 @@ export default class Event extends Component {
             <Text style={styles.title}>{event.name}</Text>
             <Text style={styles.sub}>{event.place}</Text>
           </View>
-          <Text style={styles.time}>{event.time}h</Text>
+          <Text style={styles.time}>{event.shortTime}</Text>
         </View>
       </Swipeout>
     );

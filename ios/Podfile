@@ -11,7 +11,9 @@ target 'scheduler' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
 
-  pod 'react-native-fetch-blob', :path => '../node_modules/react-native-fetch-blob'
+  # pod 'react-native-fetch-blob', :path => '../node_modules/react-native-fetch-blob'
+
+  # pod 'RNI18n', :path => '../node_modules/react-native-i18n'
 
   target 'schedulerTests' do
     inherit! :search_paths

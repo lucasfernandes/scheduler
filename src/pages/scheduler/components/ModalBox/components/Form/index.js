@@ -10,14 +10,16 @@ import ToastActions from 'store/ducks/toast';
 import EventsActions from 'store/ducks/events';
 
 /* Presentational */
-import { View, Text, TouchableOpacity } from 'react-native';
-import { withFormik } from 'formik';
+import { View, Text, TouchableOpacity, TextInput } from 'react-native';
+import { withFormik, FormikContext } from 'formik';
 import Yup from 'yup';
 import Toast from 'components/Toast';
 
 import CustomTextInput from 'components/CustomTextInput';
 import Button from 'components/Button';
 import DateTimePicker from 'pages/scheduler/components/ModalBox/components/DateTimePicker';
+
+import I18n from 'i18n';
 
 import { colors } from 'styles';
 
@@ -64,12 +66,12 @@ class Form extends Component {
   }
 
 
-  getErrors = () => {
-    const arr = Object.values(this.props.errors);
+  // getErrors = () => {
+  //   const arr = Object.values(this.props.errors);
 
-    return arr.map(err => `
-    - ${err}`);
-  }
+  //   return arr.map(err => `
+  //   - ${err}`);
+  // }
 
   handleClick = loading => (
     loading
@@ -88,16 +90,18 @@ class Form extends Component {
       } else {
         eventRequest(values);
       }
-    }, 500);
+    }, 200);
   }
 
   handleErrors = () => {
-    setTimeout(() => {
-      const errors = this.getErrors();
-      if (errors.length) {
-        this.props.toastShow(errors, 'times-circle', 'error', null, true);
-      }
-    }, 500);
+    // setTimeout(() => {
+    //   const errors = this.getErrors();
+    //   if (errors.length) {
+    //     this.props.toastShow(errors, 'times-circle', 'error', null, true);
+    //   }
+    // }, 500);
+
+    this.props.toastShow(['Todos os campos devem ser preenchidos'], 'times-circle', 'error', null, true);
   };
 
   render() {
@@ -113,7 +117,7 @@ class Form extends Component {
 
         <View style={styles.contentContainer}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>Adicionar Evento</Text>
+            <Text style={styles.title}>{I18n.t('label.addEvent')}</Text>
           </View>
 
           <View style={styles.inputsContainer}>
@@ -124,30 +128,33 @@ class Form extends Component {
                   this.setState({ datetime });
                   this.props.setFieldValue('date', datetime);
               }}
+              errors={this.props.errors.date && true}
             />
 
             <CustomTextInput
               iconName="calendar"
               inputColor="dark"
-              placeholder="Qual o nome do evento?"
+              errors={this.props.errors.name && true}
+              placeholder={I18n.t('placeholder.eventName')}
               placeholderTextColor={colors.gray}
               spaceBetween={10}
               disableIcon
-              value={this.props.name}
+              value={this.props.values.name}
               onChangeText={text => this.props.setFieldValue('name', text)}
             />
             <CustomTextInput
               iconName="calendar"
               inputColor="dark"
-              placeholder="Onde irá ocorrer?"
+              errors={this.props.errors.place && true}
+              placeholder={I18n.t('placeholder.eventPlace')}
               placeholderTextColor={colors.gray}
               spaceBetween={15}
               disableIcon
-              value={this.props.place}
+              value={this.props.values.place}
               onChangeText={text => this.props.setFieldValue('place', text)}
             />
 
-            <Button text="Criar evento" loading={loading} onPress={this.handleClick(loading)} />
+            <Button text={I18n.t('button.eventCreate')} loading={loading} onPress={this.handleClick(loading)} />
 
             <TouchableOpacity
               style={styles.cancel}
@@ -156,7 +163,7 @@ class Form extends Component {
                 : {}
               }
             >
-              <Text style={styles.cancelText}>Cancelar</Text>
+              <Text style={styles.cancelText}>{I18n.t('button.cancel')}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -188,9 +195,12 @@ const mapFormikToProps = {
     date: Yup.string()
       .required('Selecione data e horário'),
     name: Yup.string()
-      .required('Qual é o nome do evento?'),
+      .required('Qual é o nome do evento?')
+      .min(4, 'Min 4 characthers'),
     place: Yup.string()
-      .required('Onde irá ocorrer?'),
+      .required('Onde irá ocorrer?')
+      .min(4, 'Min 4 characthers'),
+
   }),
 
   // for handle errors only

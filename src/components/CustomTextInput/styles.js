@@ -45,6 +45,11 @@ const styles = StyleSheet.create({
   iconDark: {
     color: colors.gray,
   },
+
+  'input-error': {
+    borderColor: colors.red,
+    borderWidth: 0.5,
+  },
 });
 
 export default styles;

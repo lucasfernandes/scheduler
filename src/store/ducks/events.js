@@ -10,6 +10,7 @@ const { Types, Creators } = createActions({
   eventGetRequest: null,
   eventGetSuccess: ['data'],
   eventGetError: null,
+  eventGetReload: null,
 });
 
 export { Types };
@@ -31,8 +32,9 @@ export const request = state => ({
   loading: true,
 });
 
-export const success = (state, action) => ({
+export const success = state => ({
   ...state,
+  values: [],
   loading: false,
 });
 
@@ -55,6 +57,10 @@ export const getError = state => ({
   ...state,
 });
 
+export const getReload = state => ({
+  ...state,
+  loading: true,
+});
 /* Reducers to types */
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -65,4 +71,5 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.EVENT_GET_REQUEST]: getRequest,
   [Types.EVENT_GET_SUCCESS]: getSuccess,
   [Types.EVENT_GET_ERROR]: getError,
+  [Types.EVENT_GET_RELOAD]: getReload,
 });

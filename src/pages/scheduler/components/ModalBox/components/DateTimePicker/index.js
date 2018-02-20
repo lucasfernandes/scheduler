@@ -8,7 +8,7 @@ import { View } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { metrics, colors, fonts } from 'styles';
+import { metrics, colors, fonts, StyleSheet } from 'styles';
 
 import styles from './styles';
 
@@ -23,7 +23,7 @@ export default class DateTimePicker extends Component {
 
   render() {
     return (
-      <View style={{ alignSelf: 'stretch' }}>
+      <View style={styles.container}>
         <DatePicker
           {...this.props}
           style={styles.pickerContainer}
@@ -43,7 +43,10 @@ export default class DateTimePicker extends Component {
               borderRadius: metrics.baseRadius,
             },
             dateInput: {
-              borderWidth: 0,
+              borderWidth: this.props.errors
+                ? 0.5
+                : 0,
+              borderColor: this.props.errors && colors.red,
               height: 54,
               borderRadius: metrics.baseRadius,
               backgroundColor: colors.grayPlaceholder,
@@ -63,9 +66,8 @@ export default class DateTimePicker extends Component {
               fontFamily: 'Helvetica',
               textAlign: 'left',
               marginLeft: 38,
-            }
+            },
           }}
-          // onDateChange={datetime => this.setState({ datetime })}
         />
         <Icon name="calendar" size={20} style={styles.icon} />
       </View>

@@ -37,6 +37,7 @@ class CustomCalendar extends Component {
   render() {
     const { markedDates } = this.state;
 
+    console.tron.log(markedDates);
     return (
       <Calendar
         style={styles.calendar}

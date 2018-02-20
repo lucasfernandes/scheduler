@@ -20,6 +20,8 @@ import EntryHeader from 'components/EntryHeader';
 import CustomTextInput from 'components/CustomTextInput';
 import Button from 'components/Button';
 
+import I18n from 'i18n';
+
 
 import styles from './styles';
 
@@ -71,7 +73,7 @@ class Verify extends Component {
       activeOpacity={0.6}
     >
       <Text style={styles.haveAccountButton}>
-        Alterar meu número de telefone
+        {I18n.t('button.updateNumber')}
       </Text>
 
       { this.state.backLoading && <ActivityIndicator size="small" color="white" style={styles.loading} />}
@@ -88,7 +90,7 @@ class Verify extends Component {
           <CustomTextInput
             id="code"
             iconName="code"
-            placeholder="Código recebido por SMS"
+            placeholder={I18n.t('placeholder.code')}
             keyboardType="numeric"
             maxLength={6}
             secureTextEntry
@@ -96,7 +98,7 @@ class Verify extends Component {
           />
           <View style={styles.dividerButton} />
 
-          <Button text="Verificar Número" loading={loading} onPress={this.handleClick(loading)} />
+          <Button text={I18n.t('button.verify')} loading={loading} onPress={this.handleClick(loading)} />
 
           { this.renderButtonBack() }
           {/* {error && Toast.showWithGravity('Número não confirmado, tente novamente.', Toast.LONG, Toast.TOP)} */}

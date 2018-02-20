@@ -11,6 +11,7 @@ import Header from 'components/Header';
 import CustomCalendar from 'pages/scheduler/components/CustomCalendar';
 import Events from 'pages/scheduler/components/Events';
 import ModalBox from 'pages/scheduler/components/ModalBox';
+import I18n from 'i18n';
 
 import { colors } from 'styles';
 
@@ -24,11 +25,19 @@ import styles from './styles';
 const dates = {};
 
 const loadDatesWithKey = (data, key) => {
-  dates[`${data[key].date}`] = {
+  // const formatedDate = data[key].date;
+  // const formatedDate = new Date().parseExact(data[key].date, 'yyyy-mm-dd hh-mm');
+  // console.tron.log(formatedDate);
+  // console.tron.l
+  // console.tron.log(I18n.strftime(data[key].date, '%d/%m/%Y'));
+
+  dates[`${data[key].shortDate}`] = {
     selectedColor: colors.green,
     dotColor: colors.green,
     marked: true,
   };
+
+  // console.tron.log(dates);
 };
 
 const loadMarkedDates = (data) => {
@@ -44,6 +53,9 @@ const loadMarkedDates = (data) => {
 
 const Scheduler = ({ events }) => (
   <View style={styles.container}>
+
+    {/* { console.tron.log('EVENTOS')}
+    { console.tron.log(events)} */}
     <Header newEvent account />
     <ScrollView style={styles.eventsContainer}>
       <CustomCalendar markedDates={loadMarkedDates(events.data)} />

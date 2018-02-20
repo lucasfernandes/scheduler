@@ -1,20 +1,21 @@
 import { StyleSheet } from 'react-native';
 import { colors, metrics, fonts } from 'styles';
 
+// console.tron.log(metrics.screenHeight);
+
 const styles = StyleSheet.create({
   container: {
-    // flexDirection: 'row',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // flexWrap: 'wrap',
-    paddingTop: (metrics.navBarHeight + metrics.statusBarHeight) - 20,
-    padding: metrics.baseSpace,
+    paddingTop: metrics.screenHeight === metrics.iosXHeight
+      ? metrics.statusBarHeight + 5
+      : metrics.statusBarHeight,
   },
 
   messageContainer: {
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+
   },
 
   message: {
@@ -22,14 +23,15 @@ const styles = StyleSheet.create({
     fontSize: fonts.bigger,
     color: colors.white,
     fontWeight: 'bold',
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
 
-  errors: {
-    // marginLeft: 12,
-    fontSize: fonts.bigger,
-    color: colors.white,
-    fontWeight: 'bold',
-  },
+  // errors: {
+  //   marginLeft: metrics.baseSpace * 2,
+  //   fontSize: fonts.regular,
+  //   color: colors.white,
+  // },
 
   'bg-color-success': {
     backgroundColor: colors.green,

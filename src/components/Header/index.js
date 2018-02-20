@@ -12,6 +12,8 @@ import { connect } from 'react-redux';
 // import { NavigationActions } from 'react-navigation';
 import ModalActions from 'store/ducks/modal';
 
+import I18n from 'i18n';
+
 import { colors } from 'styles';
 
 import styles from './styles';
@@ -72,7 +74,7 @@ class Header extends Component {
           { this.props.backButton && this.renderBackButton() }
           { this.props.newEvent && this.renderNewEventButton() }
         </View>
-        <Text style={styles.title}>SCHEDULER</Text>
+        <Text style={styles.title}>{I18n.t('appName')}</Text>
         <View style={styles.rightButton}>
           { this.props.account && this.renderAccountButton() }
         </View>

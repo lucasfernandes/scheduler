@@ -11,7 +11,7 @@ import { colors } from 'styles';
 import styles from './styles';
 
 const CustomTextInput = ({
-  iconName, inputColor, disableIcon, spaceBetween, ...props
+  iconName, inputColor, disableIcon, spaceBetween, errors, ...props
 }) => (
   <View style={[
     styles.container,
@@ -39,6 +39,7 @@ const CustomTextInput = ({
           styles.input,
           inputColor === 'dark' ? styles.dark : {},
           disableIcon ? styles.spaceLeftInside : {},
+          errors ? styles['input-error'] : {},
         ]}
         underlineColorAndroid="transparent"
         keyboardAppearance="dark"
@@ -56,6 +57,7 @@ CustomTextInput.propTypes = {
   inputColor: PropTypes.string,
   disableIcon: PropTypes.bool,
   spaceBetween: PropTypes.number,
+  errors: PropTypes.bool,
 };
 
 CustomTextInput.defaultProps = {
@@ -65,6 +67,7 @@ CustomTextInput.defaultProps = {
   inputColor: 'purple',
   disableIcon: false,
   spaceBetween: 0,
+  errors: false,
 };
 
 export default CustomTextInput;

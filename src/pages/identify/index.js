@@ -13,6 +13,7 @@ import { View, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import EntryHeader from 'components/EntryHeader';
 import CustomTextInput from 'components/CustomTextInput';
 import Button from 'components/Button';
+import I18n from 'i18n';
 
 import styles from './styles';
 
@@ -58,20 +59,22 @@ class Identify extends Component {
           <CustomTextInput
             id="phone"
             iconName="phone"
-            placeholder="Seu número de telefone"
+            placeholder={I18n.t('placeholder.phone')}
             keyboardType="phone-pad"
             value={this.props.identify.phone}
             onChangeText={phone => this.props.identifyPhoneNumber(phone)}
           />
           <View style={styles.divider} />
 
-          <Button text="Entrar" loading={loading} onPress={this.handleClick(loading)} />
+          <Button text={I18n.t('button.enter')} loading={loading} onPress={this.handleClick(loading)} />
         </View>
       </TouchableWithoutFeedback>
     );
   }
 
   render() {
+    // console.tron.log('asdfasd');
+    // console.tron.log(I18n.currentLocale());
     return this.renderContent();
   }
 }
@@ -90,7 +93,3 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(Identify);
 
-// message: undefined,
-// icon: undefined,
-// color: undefined,
-// style: undefined,

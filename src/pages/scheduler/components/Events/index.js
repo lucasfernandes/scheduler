@@ -8,65 +8,60 @@ import { connect } from 'react-redux';
 import EventsActions from 'store/ducks/events';
 
 /* Presentational */
-import { View, Text } from 'react-native';
-import _ from 'lodash';
+import { View, ActivityIndicator, Text } from 'react-native';
 
 import Event from 'pages/scheduler/components/Events/components/Event';
+import I18n from 'i18n';
 
-import { metrics } from 'styles';
-
-// import styles from './styles';
+import styles from './styles';
 
 class Events extends Component {
-  state = {
-    //
-  }
-
   componentDidMount() {
     this.getEvents();
   }
 
   getEvents = () => {
     this.props.eventGetRequest();
-
-    // firebase.auth().onAuthStateChanged((user) => {
-    //   if (user) {
-    //     console.tron.log('TA LOGADO');
-    //     const ref = firebase.database().ref('events');
-
-    //     ref.once('value', (events) => {
-    //       const results = _.values(events.val());
-    //       results.map(result => console.tron.log(result.place));
-
-    //     }, (err) => {
-    //       console.tron.log(err);
-    //     });
-    //   } else {
-    //     console.tron.log('DESLOGADO');
-    //   }
-    // });
   }
 
+  renderLoading = () => (
+    <ActivityIndicator size="small" color="#FFF" style={styles.loading} />
+  )
+
+  renderEmpty = () => (
+    <Text style={styles.empty}>{I18n.t('label.noEvents')}</Text>
+  );
+
+  renderEvents = data => (
+    Object.keys(data).map(key => (
+      <Event key={key} event={data[key]} />
+    ))
+  );
+
+  renderContent = data => (
+    Object.keys(data).length === 0
+      ? this.renderEmpty()
+      : this.renderEvents(data)
+  );
+
   render() {
-    const { data } = this.props.events;
+    const { loading, data } = this.props.events;
 
     return (
-      <View style={{ marginTop: metrics.smallSpace / 2, flex: 1 }}>
-        {
-          Object.keys(data).map(key => (
-            <Event key={key} event={data[key]} />
-          ))
-        }
+      <View style={styles.container}>
+        { loading && this.renderLoading() }
+        { this.renderContent(data) }
       </View>
     );
   }
 }
 
-// Events.propTypes = {
+Events.propTypes = {
+  eventGetRequest: PropTypes.func.isRequired,
 //   events: PropTypes.shape({
 //     data: PropTypes.objectOf(PropTypes.shape({})),
 //   })
-// };
+};
 
 // Events.defaultProps = {
 //   data: [],

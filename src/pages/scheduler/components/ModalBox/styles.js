@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: colors.blackOpacity,
-    zIndex: 10,
   },
 
   close: { flex: 1 },
