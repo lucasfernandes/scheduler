@@ -29,13 +29,13 @@ export function* saveEvent(action) {
       const event = { [newKey]: action.values };
 
       yield call([ref, ref.update], event);
-      yield put(ActionCreators.eventSuccess());
-
+      
       yield put(ModalActionCreators.modalHide());
       yield put(ActionCreators.eventGetReload());
-      yield delay(3000);
-
+      yield delay(500);
+      
       yield put(ActionCreators.eventGetRequest());
+      yield put(ActionCreators.eventSuccess());
       // yield put(ToastActionCreators.toastShow(['22222'], 'times-circle', 'error'));
     } else {
       // call toaster fucker

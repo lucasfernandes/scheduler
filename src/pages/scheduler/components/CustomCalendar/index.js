@@ -24,9 +24,9 @@ class CustomCalendar extends Component {
     markedDates: {},
   };
 
-  componentWillMount() {
-    this.setState({ markedDates: this.props.markedDates });
-  }
+  // componentWillMount() {
+  //   this.setState({ markedDates: this.props.markedDates });
+  // }
 
   selectDay = (day) => {
     const date = { [day.dateString]: { selected: true, selectedColor: colors.add } };
@@ -34,10 +34,9 @@ class CustomCalendar extends Component {
     this.setState({ markedDates: { ...date, ...this.props.markedDates } });
   };
 
-  render() {
-    const { markedDates } = this.state;
+  renderCalendar = (markedDates) => {
+    // console.tron.log(markedDates);
 
-    console.tron.log(markedDates);
     return (
       <Calendar
         style={styles.calendar}
@@ -45,6 +44,15 @@ class CustomCalendar extends Component {
         markedDates={markedDates}
         onDayPress={day => this.selectDay(day)}
       />
+    );
+  }
+
+  render() {
+    const { markedDates } = this.props;
+    // console.tron.log('RENDERIZANDO');
+
+    return (
+      markedDates && this.renderCalendar(markedDates)
     );
   }
 }
