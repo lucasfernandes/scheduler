@@ -26,7 +26,12 @@ class CustomCalendar extends Component {
   selectDay = (day) => {
     const date = { [day.dateString]: { selected: true, selectedColor: colors.add } };
 
-    this.setState({ markedDates: { ...date, ...this.state.markedDates } });
+    this.setState({
+      markedDates: {
+        ...date,
+        ...this.props.markedDates,
+      },
+    });
   };
 
   renderCalendar = () => {
