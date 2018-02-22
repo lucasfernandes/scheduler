@@ -10,7 +10,6 @@ import { colors } from 'styles';
 import styles from './styles';
 import theme from './theme';
 
-
 class CustomCalendar extends Component {
   static propTypes = {
     markedDates: PropTypes.shape({}),
@@ -21,38 +20,29 @@ class CustomCalendar extends Component {
   };
 
   state = {
-    markedDates: {},
-  };
-
-  // componentWillMount() {
-  //   this.setState({ markedDates: this.props.markedDates });
-  // }
+    markedDates: this.props.markedDates,
+  }
 
   selectDay = (day) => {
     const date = { [day.dateString]: { selected: true, selectedColor: colors.add } };
 
-    this.setState({ markedDates: { ...date, ...this.props.markedDates } });
+    this.setState({ markedDates: { ...date, ...this.state.markedDates } });
   };
 
-  renderCalendar = (markedDates) => {
-    // console.tron.log(markedDates);
-
+  renderCalendar = () => {
     return (
       <Calendar
         style={styles.calendar}
         theme={theme}
-        markedDates={markedDates}
+        markedDates={this.state.markedDates}
         onDayPress={day => this.selectDay(day)}
       />
     );
   }
 
   render() {
-    const { markedDates } = this.props;
-    // console.tron.log('RENDERIZANDO');
-
     return (
-      markedDates && this.renderCalendar(markedDates)
+      this.renderCalendar()
     );
   }
 }

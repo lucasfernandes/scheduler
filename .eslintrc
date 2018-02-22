@@ -23,7 +23,8 @@
     "react/no-typos": "off",
     "no-unused-expressions" : "off",
     "jsx-a11y/href-no-hash": "off",
-    "no-confusing-arrow": "off"
+    "no-confusing-arrow": "off",
+    "no-param-reassign": "off"
   },
   "settings": {
     "import/resolver": {

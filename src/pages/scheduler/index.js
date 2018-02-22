@@ -1,4 +1,5 @@
 /* Core */
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 /* Redux */
@@ -17,6 +18,14 @@ import { colors } from 'styles';
 import styles from './styles';
 
 class Scheduler extends Component {
+  static propTypes = {
+    events: PropTypes.shape({
+      // data: PropTypes.arrayOf(PropTypes.objectOf({
+      //   name: PropTypes.string,
+      //   place: PropTypes.string,
+      // })),
+    }).isRequired,
+  };
 
   loadCalendar = () => {
     const dates = {};
@@ -24,7 +33,7 @@ class Scheduler extends Component {
 
     this.loadMarkedDates(dates, data);
 
-    if (dates !== {}) {
+    if (Object.keys(dates).length !== 0) {
       return this.renderCalendar(dates);
     }
 
