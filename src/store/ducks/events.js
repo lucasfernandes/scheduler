@@ -11,6 +11,10 @@ const { Types, Creators } = createActions({
   eventGetSuccess: ['data'],
   eventGetError: null,
   eventGetReload: null,
+
+  eventGetByDateRequest: ['date'],
+  eventGetByDateSuccess: ['dataByDay'],
+  eventGetByDateError: null,
 });
 
 export { Types };
@@ -23,10 +27,13 @@ export const INITIAL_STATE = {
   error: false,
   values: [],
   data: [],
+  dataByDay: [],
 };
 
 /* Reducers */
 
+
+// Add new event
 export const request = state => ({
   ...state,
   loading: true,
@@ -42,6 +49,8 @@ export const error = state => ({
   ...state,
 });
 
+
+// Request all events
 export const getRequest = state => ({
   ...state,
   loading: true,
@@ -61,6 +70,23 @@ export const getReload = state => ({
   ...state,
   loading: true,
 });
+
+// Request events by date
+export const getByDateRequest = state => ({
+  ...state,
+  loading: true,
+});
+
+export const getByDateSuccess = (state, action) => ({
+  ...state,
+  loading: false,
+  dataByDay: action.dataByDay,
+});
+
+export const getByDateError = state => ({
+  ...state,
+});
+
 /* Reducers to types */
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -72,4 +98,8 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.EVENT_GET_SUCCESS]: getSuccess,
   [Types.EVENT_GET_ERROR]: getError,
   [Types.EVENT_GET_RELOAD]: getReload,
+
+  [Types.EVENT_GET_BY_DATE_REQUEST]: getByDateRequest,
+  [Types.EVENT_GET_BY_DATE_SUCCESS]: getByDateSuccess,
+  [Types.EVENT_GET_BY_DATE_ERROR]: getByDateError,
 });

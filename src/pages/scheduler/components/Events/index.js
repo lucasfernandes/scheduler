@@ -12,6 +12,7 @@ import { View, ActivityIndicator, Text } from 'react-native';
 
 import Event from 'pages/scheduler/components/Events/components/Event';
 import I18n from 'i18n';
+import moment from 'moment';
 
 import styles from './styles';
 
@@ -21,7 +22,11 @@ class Events extends Component {
   }
 
   getEvents = () => {
+    const date = moment().format('YYYY-MM-DD');
+
+    console.tron.log(this.props);
     this.props.eventGetRequest();
+    this.props.eventGetByDateRequest(date);
   }
 
   renderLoading = () => (
@@ -45,12 +50,14 @@ class Events extends Component {
   );
 
   render() {
-    const { loading, data } = this.props.events;
+    const { loading, dataByDay } = this.props.events;
+
+    console.tron.log(this.props.events);
 
     return (
       <View style={styles.container}>
         { loading && this.renderLoading() }
-        { this.renderContent(data) }
+        { this.renderContent(dataByDay) }
       </View>
     );
   }
@@ -74,6 +81,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   eventGetRequest: () => dispatch(EventsActions.eventGetRequest()),
+  eventGetByDateRequest: date => dispatch(EventsActions.eventGetByDateRequest(date)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Events);

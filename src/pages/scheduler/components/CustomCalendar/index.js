@@ -2,6 +2,10 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
+/* Redux */
+import { connect } from 'react-redux';
+import EventsActions from 'store/ducks/events';
+
 /* Presentational */
 import { Calendar } from 'react-native-calendars';
 
@@ -49,6 +53,9 @@ class CustomCalendar extends Component {
     };
 
     this.setState({ markedDates: { ...date, ...newMarkedDates } });
+    this.props.eventGetByDateRequest(day.dateString);
+
+    console.tron.log(this.props);
   };
 
   renderCalendar = () => (
@@ -67,4 +74,8 @@ class CustomCalendar extends Component {
   }
 }
 
-export default CustomCalendar;
+const mapDispatchToProps = dispatch => ({
+  eventGetByDateRequest: date => dispatch(EventsActions.eventGetByDateRequest(date)),
+});
+
+export default connect(null, mapDispatchToProps)(CustomCalendar);

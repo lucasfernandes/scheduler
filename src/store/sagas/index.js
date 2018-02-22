@@ -8,7 +8,7 @@ import { Types as EventsTypes } from 'store/ducks/events';
 /* Sagas */
 import { identifyByPhone } from './identify';
 import { confirmationCode } from './verify';
-import { saveEvent, getAllEvents } from './events';
+import { saveEvent, getAllEvents, getEventsByDate } from './events';
 
 export default function* root() {
   yield all([
@@ -16,5 +16,6 @@ export default function* root() {
     takeLatest(VerifyTypes.VERIFY_REQUEST, confirmationCode),
     takeLatest(EventsTypes.EVENT_REQUEST, saveEvent),
     takeLatest(EventsTypes.EVENT_GET_REQUEST, getAllEvents),
+    takeLatest(EventsTypes.EVENT_GET_BY_DATE_REQUEST, getEventsByDate),
   ]);
 }

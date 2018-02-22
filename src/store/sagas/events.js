@@ -34,7 +34,7 @@ export function* saveEvent(action) {
       yield put(ActionCreators.eventGetReload());
       yield delay(500);
       
-      yield put(ActionCreators.eventGetRequest());
+      yield put(ActionCreators.eventGetByDateRequest(values.shortDate));
       yield put(ActionCreators.eventSuccess());
       // yield put(ToastActionCreators.toastShow(['22222'], 'times-circle', 'error'));
     } else {
@@ -58,6 +58,24 @@ export function* getAllEvents() {
     }
   } catch (error) {
     yield put(ActionCreators.eventGetError(error.message));
+    // console.tron.log(error.message);
+  }
+}
+
+export function* getEventsByDate(action) {
+  const queryRef = database().ref('events').orderByChild('shortDate').equalTo(action.date);
+
+  try {
+    if (isLogged) {
+      const result = yield call([queryRef, queryRef.once], 'value');
+      const dataByDay = result.val() ? result.val() : [];
+
+      yield put(ActionCreators.eventGetByDateSuccess(dataByDay));
+    } else {
+      // call toaster fucker
+    }
+  } catch (error) {
+    yield put(ActionCreators.eventGetByDateError(error.message));
     // console.tron.log(error.message);
   }
 }
