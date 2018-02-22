@@ -46,9 +46,10 @@ class Scheduler extends Component {
 
   loadDatesWithKey = (dates, data, key) => {
     dates[`${data[key].shortDate}`] = {
-      selectedColor: colors.green,
+      selectedColor: colors.add,
       dotColor: colors.green,
       marked: true,
+      selected: false,
     };
   };
 

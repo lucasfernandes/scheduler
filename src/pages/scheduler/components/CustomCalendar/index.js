@@ -24,26 +24,41 @@ class CustomCalendar extends Component {
   }
 
   selectDay = (day) => {
-    const date = { [day.dateString]: { selected: true, selectedColor: colors.add } };
+    const newMarkedDates = { ...this.props.markedDates };
 
-    this.setState({
-      markedDates: {
-        ...date,
-        ...this.props.markedDates,
-      },
-    });
+    let isScheduled = false;
+
+    const scheduled = Object.keys(newMarkedDates)
+      .filter(key => key === day.dateString);
+
+    if (Object.keys(scheduled).length !== 0) {
+      isScheduled = true;
+    }
+
+    if (isScheduled) {
+      delete newMarkedDates[day.dateString];
+    }
+
+    const date = {};
+
+    date[day.dateString] = {
+      selectedColor: colors.add,
+      dotColor: colors.green,
+      marked: true,
+      selected: true,
+    };
+
+    this.setState({ markedDates: { ...date, ...newMarkedDates } });
   };
 
-  renderCalendar = () => {
-    return (
-      <Calendar
-        style={styles.calendar}
-        theme={theme}
-        markedDates={this.state.markedDates}
-        onDayPress={day => this.selectDay(day)}
-      />
-    );
-  }
+  renderCalendar = () => (
+    <Calendar
+      style={styles.calendar}
+      theme={theme}
+      markedDates={this.state.markedDates}
+      onDayPress={day => this.selectDay(day)}
+    />
+  );
 
   render() {
     return (
