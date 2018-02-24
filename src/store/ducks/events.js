@@ -4,13 +4,13 @@ import { createReducer, createActions } from 'reduxsauce';
 
 const { Types, Creators } = createActions({
   eventRequest: ['values'],
-  eventSuccess: null,
+  eventSuccess: ['lastDateAdded'],
+  // eventSuccess: null,
   eventError: null,
 
   eventGetRequest: null,
   eventGetSuccess: ['data'],
   eventGetError: null,
-  eventGetReload: null,
 
   eventGetByDateRequest: ['date'],
   eventGetByDateSuccess: ['dataByDay'],
@@ -28,6 +28,7 @@ export const INITIAL_STATE = {
   values: [],
   data: [],
   dataByDay: [],
+  lastDateAdded: null,
 };
 
 /* Reducers */
@@ -36,13 +37,15 @@ export const INITIAL_STATE = {
 // Add new event
 export const request = state => ({
   ...state,
+  lastDateAdded: null,
   loading: true,
 });
 
-export const success = state => ({
+export const success = (state, action) => ({
   ...state,
   values: [],
   loading: false,
+  lastDateAdded: action.lastDateAdded,
 });
 
 export const error = state => ({
@@ -64,11 +67,6 @@ export const getSuccess = (state, action) => ({
 
 export const getError = state => ({
   ...state,
-});
-
-export const getReload = state => ({
-  ...state,
-  loading: true,
 });
 
 // Request events by date
@@ -97,7 +95,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.EVENT_GET_REQUEST]: getRequest,
   [Types.EVENT_GET_SUCCESS]: getSuccess,
   [Types.EVENT_GET_ERROR]: getError,
-  [Types.EVENT_GET_RELOAD]: getReload,
 
   [Types.EVENT_GET_BY_DATE_REQUEST]: getByDateRequest,
   [Types.EVENT_GET_BY_DATE_SUCCESS]: getByDateSuccess,

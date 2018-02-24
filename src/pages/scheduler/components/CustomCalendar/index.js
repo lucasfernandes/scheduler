@@ -17,6 +17,7 @@ import theme from './theme';
 class CustomCalendar extends Component {
   static propTypes = {
     markedDates: PropTypes.shape({}),
+    eventGetByDateRequest: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -54,8 +55,6 @@ class CustomCalendar extends Component {
 
     this.setState({ markedDates: { ...date, ...newMarkedDates } });
     this.props.eventGetByDateRequest(day.dateString);
-
-    console.tron.log(this.props);
   };
 
   renderCalendar = () => (
@@ -79,3 +78,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(null, mapDispatchToProps)(CustomCalendar);
+

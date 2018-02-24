@@ -29,13 +29,13 @@ export function* saveEvent(action) {
       const event = { [newKey]: action.values };
 
       yield call([ref, ref.update], event);
-      
+
       yield put(ModalActionCreators.modalHide());
-      yield put(ActionCreators.eventGetReload());
       yield delay(500);
-      
+      yield put(ActionCreators.eventGetRequest());
+
       yield put(ActionCreators.eventGetByDateRequest(values.shortDate));
-      yield put(ActionCreators.eventSuccess());
+      yield put(ActionCreators.eventSuccess(values.shortDate));
       // yield put(ToastActionCreators.toastShow(['22222'], 'times-circle', 'error'));
     } else {
       // call toaster fucker
@@ -51,6 +51,8 @@ export function* getAllEvents() {
     if (isLogged) {
       const result = yield call([ref, ref.once], 'value');
       const data = result.val() ? result.val() : [];
+
+      console.tron.log(data);
 
       yield put(ActionCreators.eventGetSuccess(data));
     } else {
