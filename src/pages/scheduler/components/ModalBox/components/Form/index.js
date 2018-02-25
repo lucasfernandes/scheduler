@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import ModalActions from 'store/ducks/modal';
 import ToastActions from 'store/ducks/toast';
-import EventsActions from 'store/ducks/events';
+import EventsNewActions from 'store/ducks/eventsNew';
 
 /* Presentational */
 import { View, Text, TouchableOpacity, TextInput } from 'react-native';
@@ -29,7 +29,7 @@ class Form extends Component {
   static propTypes = {
     modalHide: PropTypes.func.isRequired,
     submitForm: PropTypes.func.isRequired,
-    eventRequest: PropTypes.func.isRequired,
+    eventsNewRequest: PropTypes.func.isRequired,
     toastShow: PropTypes.func.isRequired,
     setFieldValue: PropTypes.func.isRequired,
     errors: PropTypes.shape({
@@ -51,7 +51,7 @@ class Form extends Component {
       icon: PropTypes.string,
       message: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
-    events: PropTypes.shape({
+    eventsNew: PropTypes.shape({
       loading: PropTypes.bool,
     }).isRequired,
   };
@@ -83,12 +83,12 @@ class Form extends Component {
     this.props.submitForm();
 
     setTimeout(() => {
-      const { errors, values, eventRequest } = this.props;
+      const { errors, values, eventsNewRequest } = this.props;
 
       if (Object.keys(errors).length >= 1) {
         this.handleErrors();
       } else {
-        eventRequest(values);
+        eventsNewRequest(values);
       }
     }, 200);
   }
@@ -106,7 +106,9 @@ class Form extends Component {
 
   render() {
     const { toast } = this.props;
-    const { loading } = this.props.events;
+    const { loading } = this.props.eventsNew;
+
+    console.tron.log(this.props.eventsNew);
 
     return (
       <View style={styles.container}>
@@ -174,14 +176,15 @@ class Form extends Component {
 
 const mapStateToProps = state => ({
   toast: state.toast,
-  events: state.events,
+  // events: state.events,
+  eventsNew: state.eventsNew,
 });
 
 const mapDispatchToProps = dispatch => ({
   modalHide: () => dispatch(ModalActions.modalHide()),
   toastShow: (message, icon, color, style, modal) =>
     dispatch(ToastActions.toastShow(message, icon, color, style, modal)),
-  eventRequest: values => dispatch(EventsActions.eventRequest(values)),
+  eventsNewRequest: values => dispatch(EventsNewActions.eventsNewRequest(values)),
 });
 
 const mapFormikToProps = {

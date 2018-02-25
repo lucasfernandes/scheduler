@@ -58,4 +58,9 @@ const mapStateToProps = state => ({
   events: state.events,
 });
 
+const mapDispatchToProps = dispatch => ({
+  eventGetRequest: () => dispatch(EventsActions.eventGetRequest()),
+  eventGetByDateRequest: date => dispatch(EventsActions.eventGetByDateRequest(date)),
+});
+
 export default connect(mapStateToProps)(Events);

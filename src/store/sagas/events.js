@@ -3,6 +3,8 @@ import { call, put } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 
 import ActionCreators from 'store/ducks/events';
+import EventsNewActionCreators from 'store/ducks/eventsNew';
+import EventsAllActionCreators from 'store/ducks/eventsAll';
 import ToastActionCreators from 'store/ducks/toast';
 import ModalActionCreators from 'store/ducks/modal';
 import moment from 'moment';
@@ -32,16 +34,16 @@ export function* saveEvent(action) {
 
       yield put(ModalActionCreators.modalHide());
       yield delay(500);
-      yield put(ActionCreators.eventGetRequest());
+      yield put(EventsAllActionCreators.eventsAllRequest());
 
-      yield put(ActionCreators.eventGetByDateRequest(values.shortDate));
-      yield put(ActionCreators.eventSuccess(values.shortDate));
+      // yield put(ActionCreators.eventGetByDateRequest(values.shortDate));
+      yield put(EventsNewActionCreators.eventsNewSuccess(values.shortDate));
       // yield put(ToastActionCreators.toastShow(['22222'], 'times-circle', 'error'));
     } else {
       // call toaster fucker
     }
   } catch (error) {
-    yield put(ActionCreators.eventGetError(error.message));
+    yield put(EventsNewActionCreators.eventsNewError(error.message));
     yield put(ToastActionCreators.toastShow([error.message], 'times-circle', 'error'));
   }
 }
@@ -52,14 +54,14 @@ export function* getAllEvents() {
       const result = yield call([ref, ref.once], 'value');
       const data = result.val() ? result.val() : [];
 
-      console.tron.log(data);
+      // console.tron.log(data);
 
-      yield put(ActionCreators.eventGetSuccess(data));
+      yield put(EventsAllActionCreators.eventsAllSuccess(data));
     } else {
       // call toaster fucker
     }
   } catch (error) {
-    yield put(ActionCreators.eventGetError(error.message));
+    yield put(ActionCreators.eventsAllError(error.message));
     // console.tron.log(error.message);
   }
 }
