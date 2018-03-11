@@ -49,7 +49,7 @@ class Form extends Component {
       modal: PropTypes.bool,
       color: PropTypes.string,
       icon: PropTypes.string,
-      message: PropTypes.arrayOf(PropTypes.string),
+      message: PropTypes.string,
     }).isRequired,
     eventsNew: PropTypes.shape({
       loading: PropTypes.bool,
@@ -101,14 +101,14 @@ class Form extends Component {
     //   }
     // }, 500);
 
-    this.props.toastShow(['Todos os campos devem ser preenchidos'], 'times-circle', 'error', null, true);
+    this.props.toastShow(I18n.t('message.validation'), 'times-circle', 'error', null, true);
   };
 
   render() {
     const { toast } = this.props;
     const { loading } = this.props.eventsNew;
 
-    console.tron.log(this.props.eventsNew);
+    // console.tron.log(this.props.eventsNew);
 
     return (
       <View style={styles.container}>

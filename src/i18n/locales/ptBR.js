@@ -20,4 +20,11 @@ export default {
     eventCreate: 'Criar evento',
     cancel: 'Cancelar',
   },
+
+  message: {
+    added: 'Evento adicionado com sucesso!',
+    removed: 'Evento removido com sucesso!',
+    error: 'Algo deu errado...',
+    validation: 'Todos os campos devem ser preenchidos',
+  },
 };

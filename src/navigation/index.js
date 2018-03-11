@@ -24,8 +24,6 @@ const Navigator = ({ dispatch, nav, toast }) => (
       })}
     />
 
-    {/* {console.tron.log(toast)} */}
-
     { toast.show && toast.modal === false &&
       <Toast color={toast.color} icon={toast.icon} style={styles.toast}>
         {toast.message}

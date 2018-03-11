@@ -4,22 +4,30 @@ import React, { Component } from 'react';
 
 /* Redux */
 import { connect } from 'react-redux';
+import EventsByDateActions from 'store/ducks/eventsByDate';
 
 /* Presentational */
 import { View, ActivityIndicator, Text } from 'react-native';
 
 import Event from 'pages/scheduler/components/Events/components/Event';
 import I18n from 'i18n';
+import moment from 'moment';
 
 import styles from './styles';
 
 class Events extends Component {
   static propTypes = {
-    events: PropTypes.shape({
+    eventsByDateRequest: PropTypes.func.isRequired,
+    eventsByDate: PropTypes.shape({
       loading: PropTypes.bool,
       // dataByDay: PropTypes.arrayOf(PropTypes.array),
     }).isRequired,
   };
+
+  componentDidMount() {
+    const today = moment().format('YYYYMMDD');
+    this.props.eventsByDateRequest(today);
+  }
 
 
   renderLoading = () => (
@@ -31,8 +39,8 @@ class Events extends Component {
   );
 
   renderEvents = data => (
-    Object.keys(data).map(key => (
-      <Event key={key} event={data[key]} />
+    Object.entries(data).map(([key, value]) => (
+      <Event key={key} data={value} id={key} />
     ))
   );
 
@@ -43,7 +51,9 @@ class Events extends Component {
   );
 
   render() {
-    const { loading, dataByDay: data } = this.props.events;
+    const { loading, data } = this.props.eventsByDate;
+
+    // console.tron.log('DENTRO DO RENDER DOS EVENTOS');
 
     return (
       <View style={styles.container}>
@@ -55,12 +65,15 @@ class Events extends Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events,
+  eventsByDate: state.eventsByDate,
 });
 
 const mapDispatchToProps = dispatch => ({
-  eventGetRequest: () => dispatch(EventsActions.eventGetRequest()),
-  eventGetByDateRequest: date => dispatch(EventsActions.eventGetByDateRequest(date)),
+  eventsByDateRequest: date => dispatch(EventsByDateActions.eventsByDateRequest(date)),
 });
 
-export default connect(mapStateToProps)(Events);
+export default connect(mapStateToProps, mapDispatchToProps)(Events);
+
+// É AQUI AGORA SAPORRA! O DUCKS TA PRONTO O SAGA TB!
+
+// TEM QUE CHAMAR OS EVENTOS POR DATA AQUI DE ALGUMA FORMA!

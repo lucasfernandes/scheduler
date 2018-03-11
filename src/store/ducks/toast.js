@@ -3,7 +3,7 @@ import { createReducer, createActions } from 'reduxsauce';
 /* Types & Action Creators */
 
 const { Types, Creators } = createActions({
-  toastShow: ['message', 'icon', 'color', 'style', 'modal'],
+  toastShow: ['message', 'icon', 'color', 'style', 'modal', 'show'],
   toastHide: null,
 });
 

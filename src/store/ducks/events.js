@@ -4,17 +4,8 @@ import { createReducer, createActions } from 'reduxsauce';
 
 const { Types, Creators } = createActions({
   eventRequest: ['values'],
-  eventSuccess: ['lastDateAdded'],
-  // eventSuccess: null,
+  eventSuccess: ['data'],
   eventError: null,
-
-  eventGetRequest: null,
-  eventGetSuccess: ['data'],
-  eventGetError: null,
-
-  eventGetByDateRequest: ['date'],
-  eventGetByDateSuccess: ['dataByDay'],
-  eventGetByDateError: null,
 });
 
 export { Types };
@@ -23,12 +14,9 @@ export default Creators;
 /* Initial State */
 
 export const INITIAL_STATE = {
+  data: {},
   loading: false,
   error: false,
-  values: [],
-  data: [],
-  dataByDay: [],
-  lastDateAdded: null,
 };
 
 /* Reducers */
@@ -37,15 +25,14 @@ export const INITIAL_STATE = {
 // Add new event
 export const request = state => ({
   ...state,
-  lastDateAdded: null,
+  data: {},
   loading: true,
 });
 
 export const success = (state, action) => ({
   ...state,
-  values: [],
+  data: action.data,
   loading: false,
-  lastDateAdded: action.lastDateAdded,
 });
 
 export const error = state => ({
@@ -53,50 +40,10 @@ export const error = state => ({
 });
 
 
-// Request all events
-export const getRequest = state => ({
-  ...state,
-  loading: true,
-});
-
-export const getSuccess = (state, action) => ({
-  ...state,
-  loading: false,
-  data: action.data,
-});
-
-export const getError = state => ({
-  ...state,
-});
-
-// Request events by date
-export const getByDateRequest = state => ({
-  ...state,
-  loading: true,
-});
-
-export const getByDateSuccess = (state, action) => ({
-  ...state,
-  loading: false,
-  dataByDay: action.dataByDay,
-});
-
-export const getByDateError = state => ({
-  ...state,
-});
-
 /* Reducers to types */
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.EVENT_REQUEST]: request,
   [Types.EVENT_SUCCESS]: success,
   [Types.EVENT_ERROR]: error,
-
-  [Types.EVENT_GET_REQUEST]: getRequest,
-  [Types.EVENT_GET_SUCCESS]: getSuccess,
-  [Types.EVENT_GET_ERROR]: getError,
-
-  [Types.EVENT_GET_BY_DATE_REQUEST]: getByDateRequest,
-  [Types.EVENT_GET_BY_DATE_SUCCESS]: getByDateSuccess,
-  [Types.EVENT_GET_BY_DATE_ERROR]: getByDateError,
 });

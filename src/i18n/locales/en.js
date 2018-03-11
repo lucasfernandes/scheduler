@@ -20,4 +20,11 @@ export default {
     eventCreate: 'Create Event',
     cancel: 'Cancel',
   },
+
+  message: {
+    added: 'Event successfully added!',
+    removed: 'Event successfully removed!',
+    error: 'Something went wrong...',
+    validation: 'Fill all fields before go!',
+  },
 };

@@ -8,17 +8,17 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from './styles';
 
-const EventButton = ({ color, icon, margin }) => (
+const EventButton = props => (
   <TouchableOpacity
     style={[
       styles.button,
-      styles[`bg-color-${color}`],
-      styles[`margin-${margin}`],
+      styles[`bg-color-${props.color}`],
+      styles[`margin-${props.margin}`],
     ]}
-    onPress={() => {}}
     activeOpacity={0.6}
+    {...props}
   >
-    <Icon name={icon} size={20} color="#FFF" />
+    <Icon name={props.icon} size={20} color="#FFF" />
   </TouchableOpacity>
 );
 

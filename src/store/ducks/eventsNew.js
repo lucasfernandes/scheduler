@@ -4,7 +4,7 @@ import { createReducer, createActions } from 'reduxsauce';
 
 const { Types, Creators } = createActions({
   eventsNewRequest: ['values'],
-  eventsNewSuccess: ['lastDateAdded'],
+  eventsNewSuccess: ['data'],
   eventsNewError: null,
 });
 
@@ -17,7 +17,7 @@ export default Creators;
 export const INITIAL_STATE = {
   loading: false,
   error: false,
-  lastDateAdded: null,
+  data: {},
 };
 
 /* Reducers */
@@ -30,12 +30,12 @@ export const request = state => ({
 export const success = (state, action) => ({
   ...state,
   loading: false,
-  lastDateAdded: action.lastDateAdded,
+  data: action.data,
 });
 
 export const error = () => ({
   loading: false,
-  lastDateAdded: null,
+  data: {},
   error: true,
 });
 
