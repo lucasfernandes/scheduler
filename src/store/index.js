@@ -7,11 +7,9 @@ import { reducer as toast } from './ducks/toast';
 import { reducer as identify } from './ducks/identify';
 import { reducer as verify } from './ducks/verify';
 import { reducer as modal } from './ducks/modal';
-import { reducer as events } from './ducks/events';
+import { reducer as eventsList } from './ducks/eventsList';
 import { reducer as eventsNew } from './ducks/eventsNew';
 import { reducer as eventsRemove } from './ducks/eventsRemove';
-import { reducer as eventsAll } from './ducks/eventsAll';
-import { reducer as eventsByDate } from './ducks/eventsByDate';
 
 import configureStore from './configureStore';
 import rootSaga from './sagas';
@@ -27,10 +25,8 @@ const rootReducer = persistCombineReducers({
   identify,
   verify,
   modal,
-  events,
+  eventsList,
   eventsNew,
-  eventsAll,
-  eventsByDate,
   eventsRemove,
 });
 

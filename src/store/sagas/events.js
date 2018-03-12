@@ -1,12 +1,9 @@
 import firebase from 'react-native-firebase';
 import { call, put } from 'redux-saga/effects';
-import { delay } from 'redux-saga';
 
-import ActionCreators from 'store/ducks/events';
+import EventsListActionCreators from 'store/ducks/eventsList';
 import EventsNewActionCreators from 'store/ducks/eventsNew';
 import EventsRemoveActionCreators from 'store/ducks/eventsRemove';
-import EventsAllActionCreators from 'store/ducks/eventsAll';
-import EventsByDateActionCreators from 'store/ducks/eventsByDate';
 import ToastActionCreators from 'store/ducks/toast';
 import ModalActionCreators from 'store/ducks/modal';
 import moment from 'moment';
@@ -47,11 +44,10 @@ export function* saveEvent(action) {
       yield call([eventsRef, eventsRef.update], data);
 
       yield put(ModalActionCreators.modalHide());
-      yield delay(500);
-
+      // yield delay(500);
       yield put(EventsNewActionCreators.eventsNewSuccess(data));
-      yield put(EventsAllActionCreators.eventsAllRequest());
-      yield put(EventsByDateActionCreators.eventsByDateRequest(values.shortDate));
+      // yield put(EventsAllActionCreators.eventsAllRequest());
+      // yield put(EventsByDateActionCreators.eventsByDateRequest(values.shortDate));
 
 
       yield put(ToastActionCreators.toastShow(I18n.t('message.added'), 'check-circle', 'success', null, false, true));
@@ -64,51 +60,12 @@ export function* saveEvent(action) {
   }
 }
 
-export function* getAllEvents() {
-  const eventsRef = mountLoggedRef();
 
-  try {
-    if (eventsRef) {
-      const queryAllRef = eventsRef.orderByChild('shortDate/shortTime');
-      const result = yield call([queryAllRef, queryAllRef.once], 'value');
-      const data = result.val() ? result.val() : [];
+export function* loadEvents(action) {
+  const data = action.events;
+  const { date } = action;
 
-      yield put(EventsAllActionCreators.eventsAllSuccess(data));
-    } else {
-      // call toaster fucker
-    }
-  } catch (error) {
-    yield put(ActionCreators.eventsAllError(error.message));
-    // console.tron.log(error.message);
-  }
-}
-
-export function* getEventsByDate(action) {
-
-  console.tron.log('ENTROU AQUI NO GETEVENTSBYDATE');
-  const eventsRef = mountLoggedRef();
-
-  try {
-    if (eventsRef) {
-      const queryByDateRef = eventsRef
-        .orderByChild('shortDate')
-        .equalTo(action.date);
-
-      const result = yield call([queryByDateRef, queryByDateRef.once], 'value');
-      // console.tron.log(result);
-      const data = result.val() ? result.val() : [];
-
-      // console.tron.log(data);
-
-      yield put(EventsByDateActionCreators.eventsByDateSuccess(data));
-    } else {
-      // console.tron.log('NAO ESTÁ LOGADO');
-    }
-  } catch (error) {
-    // console.tron.log(error.message);
-    yield put(EventsByDateActionCreators.eventsByDateError(error.message));
-    // console.tron.log(error.message);
-  }
+  yield put(EventsListActionCreators.eventsListSuccess(data, date));
 }
 
 export function* removeEvent(action) {
@@ -124,8 +81,8 @@ export function* removeEvent(action) {
       // yield put(ModalActionCreators.modalHide());
       // yield delay(500);
       
-      yield put(EventsAllActionCreators.eventsAllRequest());
-      yield put(EventsByDateActionCreators.eventsByDateRequest('20180307'));
+      // yield put(EventsAllActionCreators.eventsAllRequest());
+      // yield put(EventsByDateActionCreators.eventsByDateRequest('20180307'));
       yield put(EventsRemoveActionCreators.eventsRemoveSuccess());
       
       // yield delay(1000);

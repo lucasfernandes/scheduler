@@ -4,9 +4,8 @@ import React, { Component } from 'react';
 
 /* Redux */
 import { connect } from 'react-redux';
-import EventsActions from 'store/ducks/events';
-import EventsAllActions from 'store/ducks/eventsAll';
-import EventsByDateActions from 'store/ducks/eventsByDate';
+import EventsListActions from 'store/ducks/eventsList';
+// import EventsByDateActions from 'store/ducks/eventsByDate';
 
 /* Presentational */
 import { ActivityIndicator } from 'react-native';
@@ -20,14 +19,10 @@ import theme from './theme';
 
 class CustomCalendar extends Component {
   static propTypes = {
-    markedDates: PropTypes.shape({}),
-    eventsByDateRequest: PropTypes.func.isRequired,
-    eventsAllRequest: PropTypes.func.isRequired,
-    eventsAll: PropTypes.shape({
+    eventsList: PropTypes.shape({
       loading: PropTypes.bool,
     }).isRequired,
     eventsNew: PropTypes.shape({
-      // lastDateAdded: PropTypes.string,
     }).isRequired,
   };
 
@@ -39,33 +34,21 @@ class CustomCalendar extends Component {
     markedDates: null,
   }
 
-  componentDidMount() {
-    this.props.eventsAllRequest();
-  }
-
-  componentDidUpdate() {
-    // console.tron.log('DENTRO DO DID UPDATE DO CUSTOM CALENDAR');
-  }
-
   loadCalendar = () => {
-    const { loading, data } = this.props.eventsAll;
-
-    if (loading) return this.renderLoading();
-
-    
+    const { data } = this.props.eventsList;
     const markedDates = this.loadMarkedDates(data);
-    console.tron.log(markedDates);
-    
+
     return this.renderCalendar(markedDates);
   }
 
   dateToMark = (date) => {
-    const dates = Object.values(this.props.eventsByDate.data);
-    const selectedDate = dates.length > 0
-      ? dates[0].shortDate === date
-      : false;
+    const { data } = this.props.eventsNew;
 
-    return selectedDate;
+    const result = Object.values(data).length > 0
+      ? Object.values(data)[0].shortDate === date
+      : date === moment().format('YYYYMMDD');
+
+    return result;
   };
 
   loadMarkedDates = (data, clear=false) => {
@@ -92,10 +75,10 @@ class CustomCalendar extends Component {
   // when day is clicked
   selectDay = (day) => {
     const formatedDay = moment(day.dateString).format('YYYYMMDD');
-    this.props.eventsByDateRequest(formatedDay);
+    this.props.eventsListRequest(this.props.eventsList.data, formatedDay);
 
     const clear = true;
-    const { data } = this.props.eventsAll;
+    const { data } = this.props.eventsList;
     const markedDates = this.loadMarkedDates(data, clear);
 
     let isScheduled = false;
@@ -118,7 +101,6 @@ class CustomCalendar extends Component {
         selected: true,
       };
     }
-    // this.activeLoading();
 
     this.setState({ markedDates: newMarkedDates });
   };
@@ -140,6 +122,7 @@ class CustomCalendar extends Component {
 
   render() {
     const { markedDates } = this.state;
+
     return (
       markedDates
         ? this.renderCalendar(markedDates)
@@ -149,15 +132,12 @@ class CustomCalendar extends Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events,
-  eventsAll: state.eventsAll,
+  eventsList: state.eventsList,
   eventsNew: state.eventsNew,
-  eventsByDate: state.eventsByDate,
 });
 
 const mapDispatchToProps = dispatch => ({
-  eventsAllRequest: () => dispatch(EventsAllActions.eventsAllRequest()),
-  eventsByDateRequest: date => dispatch(EventsByDateActions.eventsByDateRequest(date)),
+  eventsListRequest: (events, date) => dispatch(EventsListActions.eventsListRequest(events, date)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomCalendar);
