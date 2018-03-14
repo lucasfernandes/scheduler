@@ -16,6 +16,7 @@ export function* identifyByPhone(action) {
     );
 
     yield call(delay, 1000);
+
     yield put(ActionCreators.identifySuccess(action.phone, identification.verificationId));
     yield put(NavigationActions.navigate({ routeName: 'Verify' }));
   } catch (error) {

@@ -26,7 +26,7 @@ export const request = state => ({
   loading: true,
 });
 
-export const success = (state, action) => ({
+export const success = state => ({
   ...state,
   loading: false,
 });
