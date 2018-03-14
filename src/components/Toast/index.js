@@ -39,22 +39,22 @@ class Toast extends Component {
       Animated.parallel([
         Animated.timing(this.state.opacity, {
           toValue: 1,
-          duration: 150,
+          duration: 200,
         }),
         Animated.timing(this.state.offset.y, {
           toValue: metrics.screenHeight === metrics.iosXHeight
             ? metrics.statusBarHeight + 67
             : metrics.statusBarHeight + 62,
-          duration: 150,
+          duration: 200,
         }),
       ]),
 
-      Animated.delay(5000),
+      Animated.delay(3000),
 
       Animated.parallel([
         Animated.timing(this.state.opacity, {
           toValue: 0,
-          duration: 150,
+          duration: 100,
         }),
 
         Animated.timing(this.state.offset.y, {

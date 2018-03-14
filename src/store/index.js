@@ -18,7 +18,7 @@ import configurePersistor from './configurePersistor';
 const rootReducer = persistCombineReducers({
   key: 'root',
   storage,
-  blacklist: ['events', 'eventsNew', 'eventsAll', 'eventsByDate'],
+  blacklist: ['eventsList', 'eventsNew', 'eventsByDate'],
 }, {
   nav: navReducer,
   toast,

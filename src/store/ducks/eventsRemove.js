@@ -3,7 +3,7 @@ import { createReducer, createActions } from 'reduxsauce';
 /* Types & Action Creators */
 
 const { Types, Creators } = createActions({
-  eventsRemoveRequest: ['key'],
+  eventsRemoveRequest: ['key', 'day'],
   eventsRemoveSuccess: null,
   eventsRemoveError: null,
 });

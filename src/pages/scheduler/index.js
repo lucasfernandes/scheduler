@@ -30,7 +30,6 @@ class Scheduler extends Component {
     const eventsRef = this.mountLoggedRef();
     const today = moment().format('YYYYMMDD');
 
-
     if (eventsRef !== null) {
       eventsRef.on('value', snap => (
         snap.val() !== null &&
@@ -58,7 +57,6 @@ class Scheduler extends Component {
     return eventsRef;
   }
 
-
   render() {
     return (
       <View style={styles.container}>
@@ -76,7 +74,7 @@ class Scheduler extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  eventsListRequest: (events, date) => dispatch(EventsListActions.eventsListRequest(events, date)),
+  eventsListRequest: (events, day) => dispatch(EventsListActions.eventsListRequest(events, day)),
 });
 
 export default connect(null, mapDispatchToProps)(Scheduler);

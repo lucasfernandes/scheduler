@@ -31,14 +31,14 @@ class Event extends Component {
     }]
   );
 
-  rightButtons = () => (
+  rightButtons = (key, day) => (
     [{
-      component: <EventButton color="delete" icon="times" margin="right" onPress={() => this.removeEvent(this.props.data)} />,
+      component: <EventButton color="delete" icon="times" margin="right" onPress={() => this.removeEvent(key, day)} />,
       backgroundColor: colors.transparent,
     }]
   );
 
-  removeEvent = () => this.props.eventsRemoveRequest(this.props.id);
+  removeEvent = (key, day) => this.props.eventsRemoveRequest(key, day);
   shareEvent = ({ name, place, date }) => Share.share({
     title: name,
     message:
@@ -56,13 +56,13 @@ ${date}`,
   })
 
   render() {
-    const { id, data } = this.props;
-    // console.tron.log(this.props);
+    const { id: key, data } = this.props;
+
     return (
       <Swipeout
         style={styles.swipeout}
         left={this.leftButtons()}
-        right={this.rightButtons(id)}
+        right={this.rightButtons(key, data.shortDate)}
         buttonWidth={100}
         sensitivity={30}
       >
@@ -79,7 +79,7 @@ ${date}`,
 }
 
 const mapDispatchToProps = dispatch => ({
-  eventsRemoveRequest: key => dispatch(EventsRemoveActions.eventsRemoveRequest(key)),
+  eventsRemoveRequest: (key, day) => dispatch(EventsRemoveActions.eventsRemoveRequest(key, day)),
 });
 
 export default connect(null, mapDispatchToProps)(Event);

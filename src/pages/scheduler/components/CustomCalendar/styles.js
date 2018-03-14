@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
     // borderColor: 'gray',
     // height: 50,
     // backgroundColor: 'red',
-    
   },
 });
 

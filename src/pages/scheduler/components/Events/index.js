@@ -15,6 +15,11 @@ import styles from './styles';
 
 class Events extends Component {
   static propTypes = {
+    eventsList: PropTypes.shape({
+      loading: PropTypes.bool,
+      data: PropTypes.shape({}),
+      day: PropTypes.string,
+    }).isRequired,
   };
 
   renderLoading = () => (
@@ -25,26 +30,26 @@ class Events extends Component {
     <Text style={styles.empty}>{I18n.t('label.noEvents')}</Text>
   );
 
-  renderEvents = (data, date) => (
-    Object.values(data).filter(value => value.shortDate === date).length > 0
-      ? Object.entries(data).map(([key, value]) => value.shortDate === date &&
+  renderEvents = (data, day) => (
+    Object.values(data).filter(value => value.shortDate === day).length > 0
+      ? Object.entries(data).map(([key, value]) => value.shortDate === day &&
         <Event key={key} data={value} id={key} />)
       : this.renderEmpty()
   );
 
-  renderContent = (data, date) => (
+  renderContent = (data, day) => (
     Object.keys(data).length === 0
       ? this.renderEmpty()
-      : this.renderEvents(data, date)
+      : this.renderEvents(data, day)
   );
 
   render() {
-    const { loading, data, date } = this.props.eventsList;
+    const { loading, data, day } = this.props.eventsList;
 
     return (
       <View style={styles.container}>
         { loading && this.renderLoading() }
-        { this.renderContent(data, date) }
+        { this.renderContent(data, day) }
       </View>
     );
   }

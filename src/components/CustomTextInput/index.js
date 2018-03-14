@@ -44,6 +44,8 @@ const CustomTextInput = ({
         underlineColorAndroid="transparent"
         keyboardAppearance="dark"
         clearButtonMode="always"
+        autoCorrect={false}
+        autoCapitalize="none"
         {...props}
       />
     </View>

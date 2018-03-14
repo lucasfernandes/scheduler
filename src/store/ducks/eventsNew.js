@@ -46,3 +46,4 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.EVENTS_NEW_SUCCESS]: success,
   [Types.EVENTS_NEW_ERROR]: error,
 });
+
