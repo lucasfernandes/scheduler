@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 /* Presentational */
-import { View, TextInput } from 'react-native';
+import { View } from 'react-native';
+import { TextInputMask } from 'react-native-masked-text';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { colors } from 'styles';
 
 import styles from './styles';
+
 
 const CustomTextInput = ({
   iconName, inputColor, disableIcon, spaceBetween, errors, ...props
@@ -34,7 +36,8 @@ const CustomTextInput = ({
               : {},
             ]}
         />}
-      <TextInput
+
+      <TextInputMask
         style={[
           styles.input,
           inputColor === 'dark' ? styles.dark : {},
@@ -51,6 +54,7 @@ const CustomTextInput = ({
     </View>
   </View>
 );
+
 
 CustomTextInput.propTypes = {
   iconName: PropTypes.string,

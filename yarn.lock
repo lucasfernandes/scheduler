@@ -4332,6 +4332,10 @@ moment@2.x.x, moment@^2.20.1:
   version "2.20.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
 
+moment@^2.19.1:
+  version "2.21.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.21.0.tgz#2a114b51d2a6ec9e6d83cf803f838a878d8a023a"
+
 morgan@~1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.6.1.tgz#5fd818398c6819cba28a7cd6664f292fe1c0bbf2"
@@ -5074,6 +5078,13 @@ react-native-i18n@^2.0.12:
   resolved "https://registry.yarnpkg.com/react-native-i18n/-/react-native-i18n-2.0.12.tgz#4a503cc73b2fe55e8518f6d4a1340d3b449d8d1a"
   dependencies:
     i18n-js "^3.0.3"
+
+react-native-masked-text@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/react-native-masked-text/-/react-native-masked-text-1.6.5.tgz#991b6701bacfff647d70b216ccbe1bc87af0b8b8"
+  dependencies:
+    moment "^2.19.1"
+    tinymask "^1.0.2"
 
 react-native-swipeout@^2.3.3:
   version "2.3.3"
@@ -6101,6 +6112,10 @@ through@^2.3.6:
 time-stamp@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/time-stamp/-/time-stamp-1.1.0.tgz#764a5a11af50561921b133f3b44e618687e0f5c3"
+
+tinymask@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/tinymask/-/tinymask-1.0.2.tgz#df3775a94087b0d3d056c256e8923c01b7ec0941"
 
 tmp@^0.0.33:
   version "0.0.33"

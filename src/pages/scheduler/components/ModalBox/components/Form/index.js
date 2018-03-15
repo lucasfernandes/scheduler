@@ -56,22 +56,9 @@ class Form extends Component {
     }).isRequired,
   };
 
-  static defaultProps = {
-    // name: this.props.name,
-    // place: this.props.place,
-  };
-
   state = {
     datetime: '',
   }
-
-
-  // getErrors = () => {
-  //   const arr = Object.values(this.props.errors);
-
-  //   return arr.map(err => `
-  //   - ${err}`);
-  // }
 
   handleClick = loading => (
     loading
@@ -94,21 +81,12 @@ class Form extends Component {
   }
 
   handleErrors = () => {
-    // setTimeout(() => {
-    //   const errors = this.getErrors();
-    //   if (errors.length) {
-    //     this.props.toastShow(errors, 'times-circle', 'error', null, true);
-    //   }
-    // }, 500);
-
     this.props.toastShow(I18n.t('message.validation'), 'times-circle', 'error', null, true);
   };
 
   render() {
     const { toast } = this.props;
     const { loading } = this.props.eventsNew;
-
-    // console.tron.log(this.props.eventsNew);
 
     return (
       <View style={styles.container}>
@@ -143,6 +121,8 @@ class Form extends Component {
               disableIcon
               value={this.props.values.name}
               onChangeText={text => this.props.setFieldValue('name', text)}
+              type="custom"
+              options={{ mask: 'SSSSSSSSSSSSSSSSSSSSSSSSS'}}
             />
             <CustomTextInput
               iconName="calendar"
@@ -154,6 +134,8 @@ class Form extends Component {
               disableIcon
               value={this.props.values.place}
               onChangeText={text => this.props.setFieldValue('place', text)}
+              type="custom"
+              options={{ mask: 'SSSSSSSSSSSSSSSSSSSSSSSSS'}}
             />
 
             <Button text={I18n.t('button.eventCreate')} loading={loading} onPress={this.handleClick(loading)} />
@@ -176,7 +158,6 @@ class Form extends Component {
 
 const mapStateToProps = state => ({
   toast: state.toast,
-  // events: state.events,
   eventsNew: state.eventsNew,
 });
 

@@ -95,6 +95,8 @@ class Verify extends Component {
             maxLength={6}
             secureTextEntry
             onChangeText={code => this.setState({ code })}
+            value={this.state.code}
+            type="only-numbers"
           />
           <View style={styles.dividerButton} />
 

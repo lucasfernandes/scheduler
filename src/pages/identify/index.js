@@ -63,6 +63,8 @@ class Identify extends Component {
             keyboardType="phone-pad"
             value={this.props.identify.phone}
             onChangeText={phone => this.props.identifyPhoneNumber(phone)}
+            type="cel-phone"
+            options={{ dddMask: '+99 (99) ' }}
           />
           <View style={styles.divider} />
 
